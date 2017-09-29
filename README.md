@@ -20,9 +20,10 @@
   - [appharbpr](http://appharbor.com)
   - [rawgit](http://rawgit.com)
   
-## [Design](https://github.com/TelerikAcademy/Slice-and-Dice/blob/master/Course-Project/EnvisionedPSD.zip)
+## [Design](https://github.com/TelerikAcademy/Slice-and-Dice/blob/master/Course-Project/EnvisionedPSD.zip) - *Envisioned*
 - based on [design distribution](https://github.com/TelerikAcademy/Slice-and-Dice/blob/master/Course-Project/PSDs.md)
 
 ## Author
-[Zahari Dimitov](https://telerikacademy.com/Users/ZachD) - **ZachD**
-2017 - Telerik Academy, [github profile](https://github.com/zachdimitrov)
+[Zahari Dimitov](https://telerikacademy.com/Users/ZachD) - **ZachD**   
+[github profile](https://github.com/zachdimitrov)  
+2017 - Telerik Academy 
