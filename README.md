@@ -2,7 +2,7 @@
 
 ### Telerik Academy - Web Front End - Course Project
 
-## [Project Requirements](https://github.com/TelerikAcademy/Slice-and-Dice/tree/master/Course-Project)
+## Project Requirements [[full]](https://github.com/TelerikAcademy/Slice-and-Dice/tree/master/Course-Project)
 - slice the given design
 - implement responsive design
 - use web server for data
@@ -20,8 +20,14 @@
   - [appharbpr](http://appharbor.com)
   - [rawgit](http://rawgit.com)
   
-## [Design](https://github.com/TelerikAcademy/Slice-and-Dice/blob/master/Course-Project/EnvisionedPSD.zip) - *Envisioned*
+## Design - [[Envisioned]](https://github.com/TelerikAcademy/Slice-and-Dice/blob/master/Course-Project/EnvisionedPSD.zip)
 - based on [design distribution](https://github.com/TelerikAcademy/Slice-and-Dice/blob/master/Course-Project/PSDs.md)
+
+## Installation
+- TODO
+
+## Test
+- TODO
 
 ## Author
 [Zahari Dimitov](https://telerikacademy.com/Users/ZachD) - **ZachD**   
