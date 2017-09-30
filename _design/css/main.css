@@ -1,0 +1,24 @@
+h1,
+h2,
+h3,
+a,
+p,
+div,
+span,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    background: #11161c url("../images/back.png") no-repeat fixed top;
+    font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+    line-height: 18px;
+    font-size: 12px;
+    text-shadow: 1px 1px 1px #ffffff;
+}
