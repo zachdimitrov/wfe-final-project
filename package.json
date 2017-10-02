@@ -1,0 +1,25 @@
+{
+  "name": "tennis-vissions",
+  "version": "1.0.0",
+  "description": "wfe-final-project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachdimitrov/wfe-final-project.git"
+  },
+  "keywords": [
+    "telerik",
+    "web",
+    "frontend",
+    "tennis"
+  ],
+  "author": "Zahari Dimitrov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zachdimitrov/wfe-final-project/issues"
+  },
+  "homepage": "https://github.com/zachdimitrov/wfe-final-project#readme"
+}
