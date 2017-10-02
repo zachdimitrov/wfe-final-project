@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="../js/hamburger.js"></script>
+    <script src="../js/slides.js"></script>
+    <script src="../js/zoom.js"></script>
 </head>
 
 <body>
@@ -17,151 +20,159 @@
                 <a href="/">
                     <img src="../images/logo.png" alt="tennis vissions logo">
                 </a>
+                <div id="navi-hamburger">
+                    <button class="hamburger">&#9776;</button>
+                    <button class="cross">&#735;</button>
+                </div>
             </div>
             <div id="navi-bar">
                 <ul id="menu-main">
-                    <li class="menu-item selected">Home</li>
-                    <li class="menu-item">Players</li>
-                    <li class="menu-item nested">Gallery &raquo;</li>
-                    <li class="menu-item">Stories</li>
-                    <li class="menu-item">Contacts</li>
-                    <li class="menu-item">Login</li>
-                    <li class="menu-item nested">Sign Up</li>
+                    <li class="menu-item selected"><a href="/">Home</a></li>
+                    <li class="menu-item"><a href="/players">Players</a></li>
+                    <li class="menu-item nested"><a href="/gallery">Gallery &raquo;</a></li>
+                    <li class="menu-item"><a href="/stories">Stories</a></li>
+                    <li class="menu-item"><a href="/contacts">Contacts</a></li>
+                    <li class="menu-item"><a href="/login">Login</a></li>
+                    <li class="menu-item nested"><a href="/signup">Sign Up</a></li>
                 </ul>
-            </div>
-            <div id="menu-social">
-                <a href="#">
-                    <img src="../images/twitter.png" alt="twitter">
-                </a>
-                <a href="#">
-                    <img src="../images/rss.png" alt="rss feeds">
-                </a>
-                <a href="#">
-                    <img src="../images/facebook.png" alt="facebook">
-                </a>
+                <div id="menu-social">
+                    <a href="#">
+                        <img src="../images/twitter.png" alt="twitter">
+                    </a>
+                    <a href="#">
+                        <img src="../images/rss.png" alt="rss feeds">
+                    </a>
+                    <a href="#">
+                        <img src="../images/facebook.png" alt="facebook">
+                    </a>
+                </div>
             </div>
         </nav>
         <section id="slide-container">
             <div id="slide-main">
-                <div class="slide-frame">
+                <div class="slide-frame frame-0">
                     <img src="../images/players/djoco.jpg" alt="player">
                     <div class="slide-bottom">
                         <h2>Novak Jocovic</h2>
                     </div>
                     <div class="slide-icons">
-                        <a href="#" class="slide-left-arrow">Left</a>
-                        <a href="#" class="slide-right-arrow">Right</a>
+                        <a class="slide-left-arrow">Left</a>
                         <a href="#" class="slide-zoom">Zoom in</a>
                         <a href="#" class="slide-link">Open link</a>
+                        <a class="slide-right-arrow">Right</a>
                     </div>
                 </div>
-                <div class="slide-frame">
+                <div class="slide-frame frame-1">
                     <img src="../images/players/dustin.jpg" alt="player">
                     <div class="slide-bottom">
                         <h2>Dustin Brown</h2>
                     </div>
                     <div class="slide-icons">
-                        <a href="#" class="slide-left-arrow">Left</a>
-                        <a href="#" class="slide-right-arrow">Right</a>
+                        <a class="slide-left-arrow">Left</a>
                         <a href="#" class="slide-zoom">Zoom in</a>
                         <a href="#" class="slide-link">Open link</a>
+                        <a class="slide-right-arrow">Right</a>
                     </div>
                 </div>
-                <div class="slide-frame">
+                <div class="slide-frame frame-2">
                     <img src="../images/players/federer.jpg" alt="player">
                     <div class="slide-bottom">
                         <h2>Roger Federer</h2>
                     </div>
                     <div class="slide-icons">
-                        <a href="#" class="slide-left-arrow">Left</a>
-                        <a href="#" class="slide-right-arrow">Right</a>
+                        <a class="slide-left-arrow">Left</a>
                         <a href="#" class="slide-zoom">Zoom in</a>
                         <a href="#" class="slide-link">Open link</a>
+                        <a class="slide-right-arrow">Right</a>
                     </div>
                 </div>
-                <div class="slide-frame">
+                <div class="slide-frame frame-3">
                     <img src="../images/players/grigor.jpg" alt="player">
                     <div class="slide-bottom">
                         <h2>Grigor Dimitrov</h2>
                     </div>
                     <div class="slide-icons">
-                        <a href="#" class="slide-left-arrow">Left</a>
-                        <a href="#" class="slide-right-arrow">Right</a>
+                        <a class="slide-left-arrow">Left</a>
                         <a href="#" class="slide-zoom">Zoom in</a>
                         <a href="#" class="slide-link">Open link</a>
+                        <a class="slide-right-arrow">Right</a>
                     </div>
                 </div>
-                <div class="slide-frame">
+                <div class="slide-frame frame-4">
                     <img src="../images/players/maria.jpg" alt="player">
                     <div class="slide-bottom">
                         <h2>Maria Sharapova</h2>
                     </div>
                     <div class="slide-icons">
-                        <a href="#" class="slide-left-arrow">Left</a>
-                        <a href="#" class="slide-right-arrow">Right</a>
+                        <a class="slide-left-arrow">Left</a>
                         <a href="#" class="slide-zoom">Zoom in</a>
                         <a href="#" class="slide-link">Open link</a>
+                        <a class="slide-right-arrow">Right</a>
                     </div>
                 </div>
-                <div class="slide-frame">
+                <div class="slide-frame frame-5">
                     <img src="../images/players/nadal.jpg" alt="player">
                     <div class="slide-bottom">
                         <h2>Rafael Nadal</h2>
                     </div>
                     <div class="slide-icons">
-                        <a href="#" class="slide-left-arrow">Left</a>
-                        <a href="#" class="slide-right-arrow">Right</a>
+                        <a class="slide-left-arrow">Left</a>
                         <a href="#" class="slide-zoom">Zoom in</a>
                         <a href="#" class="slide-link">Open link</a>
+                        <a class="slide-right-arrow">Right</a>
                     </div>
                 </div>
-                <div class="slide-frame">
+                <div class="slide-frame frame-6">
                     <img src="../images/players/tsveti.jpg" alt="player">
                     <div class="slide-bottom">
                         <h2>Tsveti Pironkova</h2>
                     </div>
                     <div class="slide-icons">
-                        <a href="#" class="slide-left-arrow">Left</a>
-                        <a href="#" class="slide-right-arrow">Right</a>
+                        <a class="slide-left-arrow">Left</a>
                         <a href="#" class="slide-zoom">Zoom in</a>
                         <a href="#" class="slide-link">Open link</a>
+                        <a class="slide-right-arrow">Right</a>
                     </div>
                 </div>
             </div>
-            <div id="slide-left-over"></div>
-            <div id="slide-right-over"></div>
         </section>
     </header>
     <main>
         <div id="main-content">
             <section id="main-about">
-                <article id="main-present">
+                <article class="main-present">
                     <img src="../images/wrench.png" alt="wrench">
-                    <h3>Services</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vero reprehenderit incidunt aspernatur quos aperiam nobis qui facere sequi asperiores? Totam error aliquid, officiis fugit est eius esse excepturi architecto perspiciatis
-                        repudiandae aliquam earum reprehenderit veniam. Necessitatibus laudantium ipsa, porro eaque corporis facere at sint fugit iusto, culpa sunt nostrum.</p>
+                    <div class="main-about-content">
+                        <h3>Services</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vero reprehenderit incidunt aspernatur quos aperiam nobis qui facere sequi asperiores? Totam error aliquid, officiis fugit est eius esse excepturi architecto perspiciatis
+                            repudiandae aliquam earum reprehenderit veniam. </p>
+                    </div>
                 </article>
-                <article id="main-present">
+                <article class="main-present">
                     <img src="../images/bubble.png" alt="bubble">
-                    <h3>Contact</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vero reprehenderit incidunt aspernatur quos aperiam nobis qui facere sequi asperiores? Totam error aliquid, officiis fugit est eius esse excepturi architecto perspiciatis
-                        repudiandae aliquam earum reprehenderit veniam. Necessitatibus laudantium ipsa, porro eaque corporis facere at sint fugit iusto, culpa sunt nostrum.</p>
+                    <div class="main-about-content">
+                        <h3>Contact</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vero reprehenderit incidunt aspernatur quos aperiam nobis qui facere sequi asperiores? Totam error aliquid, officiis fugit est eius esse excepturi architecto perspiciatis
+                            repudiandae aliquam earum reprehenderit veniam. </p>
+                    </div>
                 </article>
-                <article id="main-present">
+                <article class="main-present">
                     <img src="../images/notes.png" alt="notes">
-                    <h3>Media</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vero reprehenderit incidunt aspernatur quos aperiam nobis qui facere sequi asperiores? Totam error aliquid, officiis fugit est eius esse excepturi architecto perspiciatis
-                        repudiandae aliquam earum reprehenderit veniam. Necessitatibus laudantium ipsa, porro eaque corporis facere at sint fugit iusto, culpa sunt nostrum.</p>
+                    <div class="main-about-content">
+                        <h3>Media</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vero reprehenderit incidunt aspernatur quos aperiam nobis qui facere sequi asperiores? Totam error aliquid, officiis fugit est eius esse excepturi architecto perspiciatis
+                            repudiandae aliquam earum reprehenderit veniam. </p>
+                    </div>
                 </article>
             </section>
             <section id="main-quote">
                 <span id="icon-quote"></span>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque alias sed est eveniet, odit commodi?</p>
-                <a class="additional-info">Additional info</a>
+                <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque alias sed est eveniet, odit commodi? Totam error aliquid, officiis.</h1>
+                <a href="#" class="aditional-info">Additional info</a>
             </section>
-            <section id="main-gallery">
+            <section class="main-gallery">
                 <div class="main-gallery-item">
-                    <img src="../images/players/djoco.jpg" alt="player">
+                    <img src="../images/players/djoco.jpg" alt="player" name="Novak Jocovic">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
@@ -169,7 +180,7 @@
                     </div>
                 </div>
                 <div class="main-gallery-item">
-                    <img src="../images/players/dustin.jpg" alt="player">
+                    <img src="../images/players/dustin.jpg" alt="player" name="Dustin Brown">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
@@ -177,7 +188,7 @@
                     </div>
                 </div>
                 <div class="main-gallery-item">
-                    <img src="../images/players/federer.jpg" alt="player">
+                    <img src="../images/players/federer.jpg" alt="player" name="Roger Federer">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
@@ -185,7 +196,7 @@
                     </div>
                 </div>
                 <div class="main-gallery-item">
-                    <img src="../images/players/grigor.jpg" alt="player">
+                    <img src="../images/players/grigor.jpg" alt="player" name="Grigor Dimitrov">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
@@ -193,7 +204,7 @@
                     </div>
                 </div>
                 <div class="main-gallery-item">
-                    <img src="../images/players/maria.jpg" alt="player">
+                    <img src="../images/players/maria.jpg" alt="player" name="Maria Sharapova">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
@@ -201,7 +212,7 @@
                     </div>
                 </div>
                 <div class="main-gallery-item">
-                    <img src="../images/players/mcenroe.jpg" alt="player">
+                    <img src="../images/players/mcenroe.jpg" alt="player" name="John McEnroe">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
@@ -209,7 +220,7 @@
                     </div>
                 </div>
                 <div class="main-gallery-item">
-                    <img src="../images/players/nadal.jpg" alt="player">
+                    <img src="../images/players/nadal.jpg" alt="player" name="Rafael Nadal">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
@@ -217,7 +228,7 @@
                     </div>
                 </div>
                 <div class="main-gallery-item">
-                    <img src="../images/players/stan.jpg" alt="player">
+                    <img src="../images/players/stan.jpg" alt="player" name="Stan Wavrinka">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
@@ -225,7 +236,7 @@
                     </div>
                 </div>
                 <div class="main-gallery-item">
-                    <img src="../images/players/tsveti.jpg" alt="player">
+                    <img src="../images/players/tsveti.jpg" alt="player" name="Tsveti Pironkova">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
@@ -233,7 +244,7 @@
                     </div>
                 </div>
                 <div class="main-gallery-item">
-                    <img src="../images/players/andy.jpg" alt="player">
+                    <img src="../images/players/andy.jpg" alt="player" name="Andy Murray">
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a href="#" class="slide-zoom">Zoom In</a>
