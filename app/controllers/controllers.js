@@ -109,7 +109,7 @@ const init = (data) => {
         updateProfile: (req, res) => {
             const bodyUser = req.body;
             const reqUser = req.user;
-            return data.users.findByUsername(reqUser.username)
+            return data.users.findById(reqUser._id)
                 .then((dbUser) => {
                     if (dbUser) {
                         bodyUser._id = dbUser._id;
@@ -120,20 +120,30 @@ const init = (data) => {
                         return Promise.resolve(bodyUser);
                     }
 
-                    if (reqUser.username) {
-                        throw new Error(`User ${reqUser.username} not found!`);
+                    if (reqUser._id) {
+                        throw new Error(`User with id: ${reqUser._id} not found!`);
                     } else {
-                        throw new Error(`No username provided!`);
+                        throw new Error(`No user id provided!`);
                     }
                 })
                 .then((user) => {
                     return data.users.updateById(user);
                 })
                 .then((dbUser) => {
-                    return res.status(200).redirect('/');
+                    return res
+                        .status(200)
+                        .send({
+                            message: 'User successfully updated!',
+                            context: dbUser,
+                        });
                 })
                 .catch((err) => {
-                    return res.status(400).redirect('/profile');
+                    return res
+                        .status(404)
+                        .send({
+                            message: 'User not found!',
+                            error: err.message,
+                        });
                 });
         },
         register: (req, res) => {
@@ -150,22 +160,40 @@ const init = (data) => {
                     return data.users.create(user);
                 })
                 .then((dbUser) => {
-                    return res.status(200).redirect('/login');
+                    return res
+                        .status(200)
+                        .send({
+                            message: 'User successfully created!',
+                            context: dbUser,
+                        });
                 })
                 .catch((err) => {
-                    return res.status(400).redirect('/register');
+                    return res
+                        .status(404)
+                        .send({
+                            message: 'User not correct!',
+                            error: err.message,
+                        });
                 });
         },
         // Access control
         verifyIsUser: (req, res, next) => {
             if (!req.user) {
-                res.status(401).redirect('/login');
+                return res
+                    .status(404)
+                    .send({
+                        message: 'Username not correct!',
+                    });
             }
             return next();
         },
         verifyIsAdmin: (req, res, next) => {
             if (!req.user || req.user.role !== 'admin') {
-                res.status(401).redirect('/401');
+                return res
+                    .status(404)
+                    .send({
+                        message: 'User must be admin!',
+                    });
             }
             return next();
         },

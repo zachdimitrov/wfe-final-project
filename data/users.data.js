@@ -3,7 +3,7 @@ const User = require('../dataModels/user.model');
 
 class UsersData extends BaseData {
     constructor(db) {
-        super(db, User);
+        super(db, User, User);
     }
 
     checkPassword(username, password) {
@@ -28,13 +28,6 @@ class UsersData extends BaseData {
         return this.collection
             .findOne({
                 username,
-            })
-            .then((user) => {
-                if (!user) {
-                    throw new Error('Invalid user name');
-                }
-
-                return user;
             });
     }
 }
