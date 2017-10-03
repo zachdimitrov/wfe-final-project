@@ -101,6 +101,74 @@ const init = (data) => {
                         });
                 });
         },
+        // Auth user
+        logOut: (req, res) => {
+            req.logout();
+            return res.status(200).redirect('/');
+        },
+        updateProfile: (req, res) => {
+            const bodyUser = req.body;
+            const reqUser = req.user;
+            return data.users.findByUsername(reqUser.username)
+                .then((dbUser) => {
+                    if (dbUser) {
+                        bodyUser._id = dbUser._id;
+                        if (!bodyUser.username) {
+                            bodyUser.username = dbUser.username;
+                        }
+                        bodyUser.role = dbUser.role;
+                        return Promise.resolve(bodyUser);
+                    }
+
+                    if (reqUser.username) {
+                        throw new Error(`User ${reqUser.username} not found!`);
+                    } else {
+                        throw new Error(`No username provided!`);
+                    }
+                })
+                .then((user) => {
+                    return data.users.updateById(user);
+                })
+                .then((dbUser) => {
+                    return res.status(200).redirect('/');
+                })
+                .catch((err) => {
+                    return res.status(400).redirect('/profile');
+                });
+        },
+        register: (req, res) => {
+            const bodyUser = req.body;
+            const username = bodyUser.username;
+            return data.users.findByUsername(username)
+                .then((dbUser) => {
+                    if (dbUser) {
+                        throw new Error('User already exists');
+                    }
+                    return Promise.resolve(bodyUser);
+                })
+                .then((user) => {
+                    return data.users.create(user);
+                })
+                .then((dbUser) => {
+                    return res.status(200).redirect('/login');
+                })
+                .catch((err) => {
+                    return res.status(400).redirect('/register');
+                });
+        },
+        // Access control
+        verifyIsUser: (req, res, next) => {
+            if (!req.user) {
+                res.status(401).redirect('/login');
+            }
+            return next();
+        },
+        verifyIsAdmin: (req, res, next) => {
+            if (!req.user || req.user.role !== 'admin') {
+                res.status(401).redirect('/401');
+            }
+            return next();
+        },
     };
 };
 

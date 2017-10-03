@@ -23,6 +23,20 @@ class UsersData extends BaseData {
                 return true;
             });
     }
+
+    findByUsername(username) {
+        return this.collection
+            .findOne({
+                username,
+            })
+            .then((user) => {
+                if (!user) {
+                    throw new Error('Invalid user name');
+                }
+
+                return user;
+            });
+    }
 }
 
 module.exports = UsersData;
