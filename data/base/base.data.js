@@ -14,7 +14,8 @@ class BaseData {
 
     create(model) {
         if (!this._isModelValid(model)) {
-            return Promise.reject(`Validation for ${this.collectionName} failed!`);
+            return Promise
+                .reject(`Validation for ${this.collectionName} failed!`);
         }
 
         return this.collection.insert(model);
