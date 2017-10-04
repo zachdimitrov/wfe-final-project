@@ -20,10 +20,8 @@ class BaseData {
         });
     }
 
-    findByTitle(title) {
-        return this.collection.find({
-            'title': { $toLower: /title/ },
-        });
+    findOptions(options) {
+        return this.collection.find(options);
     }
 
     updateById(model) {

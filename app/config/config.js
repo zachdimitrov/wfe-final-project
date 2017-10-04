@@ -1,5 +1,5 @@
+const express = require('express');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const mongoMorgan = require('mongo-morgan');
 const config = require('../../config');
 
@@ -9,7 +9,8 @@ const applyTo = (app) => {
     }));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(cookieParser('keyboard cat'));
+    app.use(express.static('static'));
+    app.use('/libs', express.static('node_modules'));
 };
 
 module.exports = { applyTo };

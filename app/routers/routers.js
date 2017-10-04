@@ -1,47 +1,25 @@
 const passport = require('passport');
 
 const attachTo = (app, data) => {
-    const controller = require('../controllers').init(data);
+    const homeController = require('../controllers/home').init();
+    const userController = require('../controllers/user').init(data);
+    const postController = require('../controllers/post').init(data);
 
     // home routes //
-    app.get('/', (req, res) => {
-        return controller.getHome(req, res);
-    });
+    app.get('/api', homeController.get);
 
     // posts routes //
-    app.get('/posts', (req, res) => {
-        return controller.getPosts(req, res);
-    });
-
-    app.post('/posts', (req, res) => {
-        return controller.addPost(req, res);
-    });
-
-    app.get('/posts/:id', (req, res) => {
-        return controller.getSinglePost(req, res);
-    });
-
-    app.post('/posts/:id', (req, res) => {
-        return controller.updateSinglePost(req, res);
-    });
+    app.get('/api/posts', postController.get);
+    app.post('/api/posts', postController.post);
+    app.get('/api/posts/:id', postController.getSingle);
+    app.put('/api/posts/:id', postController.put);
 
     // auth routes //
-    app.post('/register', (req, res) => {
-        return controller.register(req, res);
-    });
+    app.get('/api/users', userController.get);
+    app.post('/api/users', userController.post);
+    app.put('/api/users', userController.put);
 
-    app.get('/logout', (req, res) => {
-        return controller.logOut(req, res);
-    });
-
-    app.post('/login', passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/login',
-    }));
-
-    app.post('/profile', controller.verifyIsUser, (req, res) => {
-        return controller.updateProfile(req, res);
-    });
+    app.post('/api/profile', userController.verifyIsUser, postController.updateProfile);
 };
 
 module.exports = { attachTo };
