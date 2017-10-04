@@ -26,14 +26,16 @@
     "homepage": "https://github.com/zachdimitrov/wfe-final-project#readme",
     "dependencies": {
         "body-parser": "^1.18.2",
-        "connect-mongo": "^1.3.2",
-        "cookie-parser": "^1.4.3",
+        "cryptojs": "^2.5.3",
         "express": "^4.16.1",
-        "express-session": "^1.15.6",
+        "handlebars": "^4.0.10",
+        "jquery": "^3.2.1",
         "mongo-morgan": "^2.0.1",
         "mongodb": "^2.2.31",
-        "passport": "^0.4.0",
-        "passport-local": "^1.0.0"
+        "systemjs": "^0.20.19",
+        "systemjs-plugin-babel": "0.0.25",
+        "systemjs-plugin-text": "0.0.11",
+        "toastr": "^2.1.2"
     },
     "devDependencies": {
         "gulp": "^3.9.1",
