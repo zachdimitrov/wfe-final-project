@@ -1,4 +1,4 @@
-/* globals $ */
+/* globals $ Sammy */
 /* eslint-disable no-invalid-this */
 /* eslint-disable no-unused-vars */
 
@@ -6,10 +6,9 @@ import * as data from 'data';
 import * as postsController from 'postsController';
 import * as usersController from 'usersController';
 import * as homeController from 'homeController';
-import { Sammy } from 'sammy';
-import { toastr } from 'toastsr';
+import * as toastr from 'toastr';
 
-const sammyApp = $.sammy('#content', function() {
+const sammyApp = new Sammy('#content', function() {
     this.get('#/', homeController.all);
     this.get('#/posts', postsController.all);
     this.get('#/posts/add', postsController.add);
@@ -18,7 +17,7 @@ const sammyApp = $.sammy('#content', function() {
 });
 
 $(function() {
-    sammyApp.run('#/user');
+    sammyApp.run('#/');
 
     if (data.users.hasUser()) {
         $('#container-sign-in').addClass('hidden');

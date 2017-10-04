@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 
 import * as jsonRequester from 'requester';
-import { CryptoJS } from 'cryptojs';
+import * as CryptoJS from 'cryptojs';
 import {
     KEY,
     API_URLS,

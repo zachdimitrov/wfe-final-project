@@ -3,7 +3,7 @@
 
 import * as data from 'data';
 import * as templates from 'template-requester';
-import { toastr } from 'toastsr';
+import * as toastr from 'toastr';
 
 function all(context) {
     let users;
@@ -38,9 +38,7 @@ function register(context) {
         });
 }
 
-const usersController = {
-    all: all,
-    register: register,
+export {
+    all,
+    register,
 };
-
-export { usersController };

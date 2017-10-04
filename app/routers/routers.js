@@ -1,7 +1,7 @@
 const attachTo = (app, data) => {
-    const homeController = require('../controllers/home').init();
-    const userController = require('../controllers/user').init(data);
-    const postController = require('../controllers/post').init(data);
+    const homeController = require('../controllers/homeController').init();
+    const userController = require('../controllers/userController').init(data);
+    const postController = require('../controllers/postController').init(data);
 
     // home routes //
     app.get('/api', homeController.get);

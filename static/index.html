@@ -5,16 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tennis Vissions</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <!-- <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" /> -->
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="libs/toastr/build/toastr.min.css" />
+    <script src="./js/helpers/hamburger.js"></script>
+    <script src="./js/helpers/slides.js"></script>
+    <script src="./js/helpers/zoom.js"></script>
 </head>
 
 <body>
-    <h1>Hello, it works!</h1>
+    <header>
+        <nav id="navi-container">
+            <div id="navi-logo">
+                <a href="/">
+                    <img src="../images/logo.png" alt="tennis vissions logo">
+                </a>
+                <div id="navi-hamburger">
+                    <button class="hamburger">&#9776;</button>
+                    <button class="cross">&#735;</button>
+                </div>
+            </div>
+            <div id="navi-bar">
+                <ul id="menu-main">
+                    <li class="menu-item selected"><a href="/">Home</a></li>
+                    <li class="menu-item"><a href="/players">Players</a></li>
+                    <li class="menu-item nested"><a href="/gallery">Gallery &raquo;</a></li>
+                    <li class="menu-item"><a href="/stories">Stories</a></li>
+                    <li class="menu-item"><a href="/contacts">Contacts</a></li>
+                    <li class="menu-item"><a href="/login">Login</a></li>
+                    <li class="menu-item nested"><a href="/signup">Sign Up</a></li>
+                </ul>
+                <div id="menu-social">
+                    <a href="#">
+                        <img src="../images/twitter.png" alt="twitter">
+                    </a>
+                    <a href="#">
+                        <img src="../images/rss.png" alt="rss feeds">
+                    </a>
+                    <a href="#">
+                        <img src="../images/facebook.png" alt="facebook">
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <section id="slide-container">
+
+        </section>
+    </header>
+    <main>
+        <div id="content">
+
+        </div>
+    </main>
+    <footer>
+        <section id="foot-top">
+
+        </section>
+        <section id="foot-bottom">
+            <p id="foot-right">Telerik Academy, 2017 - <strong>Zahari Dimitrov</strong></p>
+        </section>
+    </footer>
     <script src="libs/systemjs/dist/system.js"></script>
     <script src="js/system-config.js"></script>
+    <script src="libs/sammy/lib/sammy.js"></script>
 </body>
 
 </html>

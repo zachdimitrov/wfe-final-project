@@ -3,7 +3,7 @@
 
 import * as data from 'data';
 import * as templates from 'template-requester';
-import { toastr } from 'toastsr';
+import * as toastr from 'toastr';
 
 function all(context) {
     let posts;
@@ -46,9 +46,7 @@ function add(context) {
         });
 }
 
-const postsController = {
-    all: all,
-    add: add,
+export {
+    all,
+    add,
 };
-
-export { postsController };

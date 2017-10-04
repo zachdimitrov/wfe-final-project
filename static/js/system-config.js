@@ -33,9 +33,9 @@ System.config({
         // Library files
         'jquery': 'libs/jquery/dist/jquery.min.js',
         'handlebars': 'libs/handlebars/dist/handlebars.min.js',
-        'cryptojs': 'libs/cryptojs/cryptojs.js',
+        'cryptojs': 'libs/cryptojs/lib/crypto.js',
         'toastr': 'libs/toastr/build/toastr.min.js',
-        'sammy': 'libs/sammy/lib/min/sammy-latest.min.js',
+        // 'sammy': 'libs/sammy/lib/min/sammy-latest.min.js',
     },
 });
 
