@@ -1,3 +1,6 @@
+/* globals $ */
+import Handlebars from 'handlebars';
+
 const cache = {};
 
 function get(name) {
@@ -6,9 +9,9 @@ function get(name) {
             resolve(cache[name]);
             return;
         }
-        let url = `templates/${name}.handlebars`;
+        const url = `templates/${name}.handlebars`;
         $.get(url, function(html) {
-            let template = Handlebars.compile(html);
+            const template = Handlebars.compile(html);
             cache[name] = template;
             resolve(template);
         });

@@ -1,4 +1,5 @@
 /* globals System */
+/* eslint-disable max-len */
 
 System.config({
     transpiler: 'plugin-babel',

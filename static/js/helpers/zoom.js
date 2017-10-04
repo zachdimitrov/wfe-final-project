@@ -1,13 +1,13 @@
+/* globals $ */
+
 $(document).ready(function() {
-    var zoom = $('.slide-zoom');
+    const zoom = $('.slide-zoom');
 
     zoom.click(function(ev) {
-        var selected = $(ev.target).parent();
-        var img = selected.prevAll('img');
-        console.log(img.attr('name'));
-        var name = selected.parent().find('h2').html() || img.attr('name');
-        var src = img.attr('src');
-        var slide = img.parent();
+        const selected = $(ev.target).parent();
+        const img = selected.prevAll('img');
+        const name = selected.parent().find('h2').html() || img.attr('name');
+        const src = img.attr('src');
 
         $('#slide-container').hide();
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
             $('.image-view').remove();
         }
 
-        var $image = $('<img />')
+        const $image = $('<img />')
             .attr('src', src)
             .attr('width', '100%');
 
@@ -25,12 +25,12 @@ $(document).ready(function() {
             .append('<h4>' + name + '</h4>')
             .append('<p>click to close</p>')
             .appendTo('header')
-            .click(function(ev) {
+            .click(function(evt) {
                 $('.image-view').remove();
                 $('#slide-container').show();
             })
             .animate({
-                width: '90%'
+                width: '90%',
             });
     });
 });

@@ -32,8 +32,10 @@ const data = {
     login(user) {
         return requester.put(API_URLS.userLogin, user)
             .then((respUser) => {
-                localStorage.setItem(KEY.STORAGE_USERNAME, respUser.result.username);
-                localStorage.setItem(KEY.STORAGE_AUTH, respUser.result.authKey);
+                localStorage
+                    .setItem(KEY.STORAGE_USERNAME, respUser.result.username);
+                localStorage
+                    .setItem(KEY.STORAGE_AUTH, respUser.result.authKey);
             });
     },
     register(user) {

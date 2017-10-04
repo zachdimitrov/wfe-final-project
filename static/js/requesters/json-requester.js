@@ -1,10 +1,12 @@
+/* globals $ */
+
 function send(method, url, options) {
     options = options || {};
 
-    let headers = options.headers || {},
-        data = options.data || undefined;
+    const headers = options.headers || {};
+    const data = options.data || null;
 
-    let promise = new Promise(function(resolve, reject) {
+    const promise = new Promise(function(resolve, reject) {
         $.ajax({
             url: url,
             method: method,
@@ -16,7 +18,7 @@ function send(method, url, options) {
             },
             error: function(err) {
                 reject(err);
-            }
+            },
         });
     });
     return promise;
@@ -42,5 +44,5 @@ export {
     get,
     post,
     put,
-    del
+    del,
 };

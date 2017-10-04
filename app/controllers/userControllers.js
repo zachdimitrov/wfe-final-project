@@ -68,25 +68,35 @@ const init = (data) => {
 
         put: (req, res) => {
             const reqUser = req.body;
-            const user = db('users').find({
-                usernameToLower: reqUser.username.toLowerCase(),
-            });
-            if (!user || user.passHash !== reqUser.passHash) {
-                return res.status(404)
-                    .send('Invalid username or password');
-            }
+            return data.users.findOptions({
+                    usernameToLower: reqUser.username.toLowerCase(),
+                })
+                .then((dbUser) => {
+                    if (!dbUser || dbUser.passHash !== reqUser.passHash) {
+                        return res.status(404)
+                            .send('Invalid username or password');
+                    }
 
-            if (!user.authKey) {
-                user.authKey = generateAuthKey(user.id);
-                db.save();
-            }
+                    if (!dbUser.authKey) {
+                        dbUser.authKey = generateAuthKey(dbUser.id);
+                        return data.users.updateById(dbUser)
+                            .then((u) => {
+                                return res.send({
+                                    result: {
+                                        username: u.username,
+                                        authKey: u.authKey,
+                                    },
+                                });
+                            });
+                    }
 
-            return res.send({
-                result: {
-                    username: user.username,
-                    authKey: user.authKey,
-                },
-            });
+                    return res.send({
+                        result: {
+                            username: dbUser.username,
+                            authKey: dbUser.authKey,
+                        },
+                    });
+                });
         },
     };
 };

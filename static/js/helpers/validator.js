@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+
 function validateString(str, min, max, chars) {
     if (typeof str !== 'string' || str.length < min || str.length > max) {
         throw new Error(`Invalid username: Length must be between ${min} and ${max}`);

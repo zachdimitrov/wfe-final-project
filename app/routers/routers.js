@@ -1,5 +1,3 @@
-const passport = require('passport');
-
 const attachTo = (app, data) => {
     const homeController = require('../controllers/home').init();
     const userController = require('../controllers/user').init(data);
@@ -18,8 +16,6 @@ const attachTo = (app, data) => {
     app.get('/api/users', userController.get);
     app.post('/api/users', userController.post);
     app.put('/api/users', userController.put);
-
-    app.post('/api/profile', userController.verifyIsUser, postController.updateProfile);
 };
 
 module.exports = { attachTo };
