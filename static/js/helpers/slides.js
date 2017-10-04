@@ -1,6 +1,6 @@
 /* globals $ */
 
-$(document).ready(function() {
+const slides = $(document).ready(function() {
     const $frames = $('#slide-main .slide-frame');
     const $left = $('#slide-main .slide-left-arrow');
     const $right = $('#slide-main .slide-right-arrow');
@@ -43,3 +43,5 @@ $(document).ready(function() {
         }
     }
 });
+
+export { slides };

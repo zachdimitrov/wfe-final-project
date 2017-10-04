@@ -1,61 +1,125 @@
-import * as requester from 'requester';
-
+import * as jsonRequester from 'requester';
+import { CryptoJS } from 'cryptojs';
 import {
     KEY,
     API_URLS,
 } from 'constants';
 
-/* Users */
+/* users */
 
-const data = {
-    posts() {
-        return requester.getJSON(API_URLS.posts);
-    },
-    addPost(post) {
-        const options = {
-            headers: {
-                [KEY.HTTP_HEADER]: localStorage.getItem(KEY.STORAGE_AUTH),
-            },
-        };
+function signIn(user) {
+    const reqUser = {
+        username: user.username,
+        passHash: CryptoJS.SHA1(user.username + user.password).toString(),
+    };
 
-        return requester.post(API_URLS.posts, post, options);
-    },
-    editPost(id, type) {
-        const options = {
-            headers: {
-                [KEY.HTTP_HEADER]: localStorage.getItem(KEY.STORAGE_AUTH),
-            },
-        };
+    const options = {
+        data: reqUser,
+    };
 
-        return requester.post(API_URLS.posts + id, { type }, options);
-    },
-    login(user) {
-        return requester.put(API_URLS.userLogin, user)
-            .then((respUser) => {
-                localStorage
-                    .setItem(KEY.STORAGE_USERNAME, respUser.result.username);
-                localStorage
-                    .setItem(KEY.STORAGE_AUTH, respUser.result.authKey);
-            });
-    },
-    register(user) {
-        return requester.post(API_URLS.userRegister, user);
-    },
-    logout() {
-        return Promise.resolve()
-            .then(() => {
-                localStorage.removeItem(KEY.STORAGE_USERNAME);
-                localStorage.removeItem(KEY.STORAGE_AUTH);
-            });
-    },
-    isLoggedIn() {
-        return Promise.resolve()
-            .then(() => {
-                return !!localStorage.getItem(KEY.STORAGE_USERNAME);
-            });
-    },
+    return jsonRequester.put(API_URLS.LOGIN, options)
+        .then(function(resp) {
+            const u = resp.result;
+            localStorage.setItem(KEY.STORAGE_USERNAME, u.username);
+            localStorage.setItem(KEY.STORAGE_AUTHKEY, u.authKey);
+            return u;
+        });
+}
+
+function signOut() {
+    const promise = new Promise(function(resolve, reject) {
+        localStorage.removeItem(KEY.STORAGE_USERNAME);
+        localStorage.removeItem(KEY.STORAGE_AUTHKEY);
+        resolve();
+    });
+    return promise;
+}
+
+function register(user) {
+    const reqUser = {
+        username: user.username,
+        passHash: CryptoJS.SHA1(user.username + user.password).toString(),
+    };
+
+    return jsonRequester.post(API_URLS.REGISTER, {
+            data: reqUser,
+        })
+        .then(function(resp) {
+            const u = resp.result;
+            localStorage.setItem(KEY.STORAGE_USERNAME, u.username);
+            localStorage.setItem(KEY.STORAGE_AUTHKEY, u.authKey);
+            return {
+                username: resp.result.username,
+            };
+        });
+}
+
+function hasUser() {
+    return !!localStorage.getItem(KEY.STORAGE_USERNAME) &&
+        !!localStorage.getItem(KEY.STORAGE_AUTHKEY);
+}
+
+function authUser() {
+    return localStorage.getItem(KEY.STORAGE_USERNAME);
+}
+
+/* posts */
+
+function postsGet() {
+    const options = {
+        headers: {
+            'x-auth-key': localStorage
+                .getItem(KEY.STORAGE_AUTH),
+        },
+    };
+    return jsonRequester.get(API_URLS.POSTS, options)
+        .then(function(res) {
+            return res.result;
+        });
+}
+
+function postsAdd(post) {
+    const options = {
+        data: post,
+        headers: {
+            'x-auth-key': localStorage.getItem(KEY.STORAGE_AUTHKEY),
+        },
+    };
+
+    return jsonRequester.post(API_URLS.POSTS, options)
+        .then(function(resp) {
+            return resp.result;
+        });
+}
+
+function postsUpdate(id, post) {
+    const options = {
+        data: post,
+        headers: {
+            'x-auth-key': localStorage.getItem(KEY.STORAGE_AUTHKEY),
+        },
+    };
+    return jsonRequester.put('API_URLS.POSTS' + id, options)
+        .then(function(resp) {
+            return resp.result;
+        });
+}
+
+const users = {
+    signIn,
+    signOut,
+    register,
+    hasUser,
+    authUser,
+};
+
+const posts = {
+    get: postsGet,
+    add: postsAdd,
+    update: postsUpdate,
 };
 
 export {
-    data,
+    users,
+    posts,
 };
