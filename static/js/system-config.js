@@ -21,6 +21,7 @@ System.config({
         'postModel': 'js/models/post.js',
         'usersController': 'js/controllers/usersController.js',
         'postsController': 'js/controllers/postsController.js',
+        'homeController': 'js/controllers/homeController.js',
         'router': 'js/routing.js',
         'slides': 'js/helpers/slides.js',
         'hamburger': 'js/helpers/hamburger.js',

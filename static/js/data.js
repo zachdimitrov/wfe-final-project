@@ -67,10 +67,7 @@ function authUser() {
 
 function postsGet() {
     const options = {
-        headers: {
-            'x-auth-key': localStorage
-                .getItem(KEY.STORAGE_AUTH),
-        },
+        headers: {},
     };
     return jsonRequester.get(API_URLS.POSTS, options)
         .then(function(res) {

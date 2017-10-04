@@ -2,6 +2,9 @@
 /* eslint-disable no-invalid-this */
 
 import * as data from 'data';
+import * as postsController from 'postsController';
+import * as usersController from 'usersController';
+import * as homeController from 'homeController';
 import { Sammy } from 'sammy';
 import { toastr } from 'toastsr';
 
