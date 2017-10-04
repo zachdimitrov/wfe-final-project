@@ -1,4 +1,3 @@
-/* globals $ */
 /* eslint-disable no-invalid-this */
 
 import * as data from 'data';

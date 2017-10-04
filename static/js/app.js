@@ -1,5 +1,6 @@
 /* globals $ */
 /* eslint-disable no-invalid-this */
+/* eslint-disable no-unused-vars */
 
 import * as data from 'data';
 import * as postsController from 'postsController';
