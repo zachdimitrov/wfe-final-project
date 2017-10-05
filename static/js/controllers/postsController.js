@@ -1,16 +1,14 @@
-/* globals $ */
+/* globals $ toastr */
 /* eslint-disable no-invalid-this */
 
 import * as data from 'data';
 import * as templates from 'template-requester';
-import * as toastr from 'toastr';
 
 function all(context) {
     let posts;
     data.posts.get()
         .then(function(resPosts) {
             posts = resPosts;
-            console.log(posts);
             return templates.get('posts');
         })
         .then(function(template) {

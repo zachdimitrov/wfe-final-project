@@ -1,19 +1,20 @@
 
         <section id="slide-container">
             <div id="slide-main">
-              {{#each }}
-                <div class="slide-frame frame-0">
-                    <img src="../images/players/djoco.jpg" alt="player">
+              {{#each posts}}
+                <div class="slide-frame frame-{{@index}}">
+                    <img src={{imageUrl}} alt={{title}}>
                     <div class="slide-bottom">
-                        <h2>Novak Jocovic</h2>
+                        <h2>{{title}}</h2>
                     </div>
                     <div class="slide-icons">
                         <a class="slide-left-arrow">Left</a>
-                        <a href="#" class="slide-zoom">Zoom in</a>
-                        <a href="#" class="slide-link">Open link</a>
+                        <a class="slide-zoom">Zoom in</a>
+                        <a href="#/posts/{{_id}}" class="slide-link">Open link</a>
                         <a class="slide-right-arrow">Right</a>
                     </div>
                 </div>
+            {{/each}}
             </div>
         </section>
         <div id="main-content">
@@ -47,13 +48,15 @@
                 <a href="#" class="aditional-info">Additional info</a>
             </section>
             <section class="main-gallery">
+            {{#each posts}}
                 <div class="main-gallery-item">
-                    <img src="../images/players/djoco.jpg" alt="player" name="Novak Jocovic">
+                    <img src={{imageUrl}} alt={{title}} name={{title}}>
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
-                        <a href="#" class="slide-zoom">Zoom In</a>
-                        <a href="#" class="slide-link">Open Link</a>
+                        <a class="slide-zoom">Zoom In</a>
+                        <a href="#/posts/{{_id}}" class="slide-link">Open Link</a>
                     </div>
                 </div>
+            {{/each}}
             </section>
         </div>

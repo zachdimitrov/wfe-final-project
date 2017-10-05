@@ -51,7 +51,7 @@ function register(user) {
             localStorage.setItem(KEY.STORAGE_USERNAME, u.username);
             localStorage.setItem(KEY.STORAGE_AUTHKEY, u.authKey);
             return {
-                username: resp.result.username,
+                username: resp.context.username,
             };
         });
 }
@@ -68,12 +68,9 @@ function authUser() {
 /* posts */
 
 function postsGet() {
-    const options = {
-        headers: {},
-    };
-    return jsonRequester.get(API_URLS.POSTS, options)
+    return jsonRequester.get(API_URLS.POSTS)
         .then(function(res) {
-            return res.result;
+            return res.context;
         });
 }
 
@@ -87,7 +84,7 @@ function postsAdd(post) {
 
     return jsonRequester.post(API_URLS.POSTS, options)
         .then(function(resp) {
-            return resp.result;
+            return resp.context;
         });
 }
 
@@ -100,7 +97,7 @@ function postsUpdate(id, post) {
     };
     return jsonRequester.put('API_URLS.POSTS' + id, options)
         .then(function(resp) {
-            return resp.result;
+            return resp.context;
         });
 }
 

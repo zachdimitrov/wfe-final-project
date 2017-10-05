@@ -1,8 +1,9 @@
+/* globals toastr */
 /* eslint-disable no-invalid-this */
 
 import * as data from 'data';
 import * as templates from 'template-requester';
-import * as toastr from 'toastr';
+import * as pageHelpers from 'page-helpers';
 
 function all(context) {
     let posts;
@@ -12,11 +13,13 @@ function all(context) {
             return templates.get('home');
         })
         .then(function(template) {
-            context.$element().html(template(posts));
+            context.$element().html(template({ posts }));
+            pageHelpers.zoomin();
+            pageHelpers.slides();
+            pageHelpers.hamburger();
         })
         .catch(function(err) {
-            toastr.error('Something very bad happened');
-            document.location.reload(true);
+            toastr.error(err.message, 'Something very bad happened');
         });
 }
 

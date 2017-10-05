@@ -23,18 +23,13 @@ System.config({
         'postsController': 'js/controllers/postsController.js',
         'homeController': 'js/controllers/homeController.js',
         'router': 'js/routing.js',
-        'slides': 'js/helpers/slides.js',
-        'hamburger': 'js/helpers/hamburger.js',
-        'zoom': 'js/helpers/zoom.js',
-
-        // templates
-        // 'homeTemplate': 'templates/home.handlebars',
+        'page-helpers': 'js/helpers/page-helpers.js',
 
         // Library files
         'jquery': 'libs/jquery/dist/jquery.min.js',
         'handlebars': 'libs/handlebars/dist/handlebars.min.js',
         'cryptojs': 'libs/cryptojs/lib/crypto.js',
-        'toastr': 'libs/toastr/build/toastr.min.js',
+        // 'toastr': 'libs/toastr/toastr.js',
         // 'sammy': 'libs/sammy/lib/min/sammy-latest.min.js',
     },
 });

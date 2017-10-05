@@ -7,12 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="libs/toastr/build/toastr.min.css" />
-    <script src="./js/helpers/hamburger.js"></script>
-    <script src="./js/helpers/slides.js"></script>
-    <script src="./js/helpers/zoom.js"></script>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
 </head>
 
 <body>
@@ -34,8 +30,9 @@
                     <li class="menu-item nested"><a href="/gallery">Gallery &raquo;</a></li>
                     <li class="menu-item"><a href="/stories">Stories</a></li>
                     <li class="menu-item"><a href="/contacts">Contacts</a></li>
-                    <li class="menu-item"><a href="/login">Login</a></li>
-                    <li class="menu-item nested"><a href="/signup">Sign Up</a></li>
+                    <li id="btn-login" class="menu-item nested"><a href="/#/users/login">Login</a></li>
+                    <li id="btn-signup" class="menu-item nested"><a href="/#/users/signup">Sign Up</a></li>
+                    <li id="btn-logout" class="menu-item"><a>Logout</a></li>
                 </ul>
                 <div id="menu-social">
                     <a href="#">
@@ -58,15 +55,18 @@
         <section id="foot-top">
             <article id="foot-mission">
                 <h4>ATP news</h4>
-                <p>For the fourth time in history Roger Federer and Rafael Nadal captured all four Grand Slam titles in a single year. Federer won his 18th Grand Slam defeating Nadal in the final of the Australian Open. Nadal won his 15th Grand Slam, and record 10th title in Paris, defeating Stan Wawrinka in the final of the French Open. </p>
+                <p>For the fourth time in history Roger Federer and Rafael Nadal captured all four Grand Slam titles in a single year. Federer won his 18th Grand Slam defeating Nadal in the final of the Australian Open. Nadal won his 15th Grand Slam, and
+                    record 10th title in Paris, defeating Stan Wawrinka in the final of the French Open. </p>
             </article>
             <article id="foot-mission">
                 <h4>WTA news</h4>
-                <p>Tickets to the BNP Paribas WTA Finals Singapore presented by SC Global are on sale at the www.WTAFinals.com, an immersive one-stop destination for all things tournament-related, bringing fans the latest news from the top players on their journey on the Porsche Race to Singapore.</p>
+                <p>Tickets to the BNP Paribas WTA Finals Singapore presented by SC Global are on sale at the www.WTAFinals.com, an immersive one-stop destination for all things tournament-related, bringing fans the latest news from the top players on their
+                    journey on the Porsche Race to Singapore.</p>
             </article>
             <article id="foot-mission">
                 <h4>Ammateurs news</h4>
-                <p>Haviland Tennis Academy is a new junior academy located in Greenville, SC. We have a beautiful new tennis center that boasts 4 clay courts, 3 fast hard courts, and 3 slow hard courts. Our facility is dedicated to our junior program, so there are never members occupying courts or getting in the way of our training sessions. </p>
+                <p>Haviland Tennis Academy is a new junior academy located in Greenville, SC. We have a beautiful new tennis center that boasts 4 clay courts, 3 fast hard courts, and 3 slow hard courts. Our facility is dedicated to our junior program, so
+                    there are never members occupying courts or getting in the way of our training sessions. </p>
             </article>
         </section>
         <section id="foot-bottom">
@@ -76,6 +76,7 @@
     <script src="libs/systemjs/dist/system.js"></script>
     <script src="js/system-config.js"></script>
     <script src="libs/sammy/lib/sammy.js"></script>
+    <script src="libs/toastr/toastr.js"></script>
 </body>
 
 </html>

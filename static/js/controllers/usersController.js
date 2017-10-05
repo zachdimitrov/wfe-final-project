@@ -1,9 +1,8 @@
-/* globals $ */
+/* globals $ toastr */
 /* eslint-disable no-invalid-this */
 
 import * as data from 'data';
 import * as templates from 'template-requester';
-import * as toastr from 'toastr';
 
 function all(context) {
     let users;
@@ -17,12 +16,33 @@ function all(context) {
         });
 }
 
-function register(context) {
-    templates.get('register')
+function login(context) {
+    templates.get('login')
         .then(function(template) {
             context.$element().html(template());
 
-            $('#btn-register').on('click', function() {
+            $('#btn-continue').on('click', function() {
+                const user = {
+                    username: $('#tb-reg-username').val(),
+                    password: $('#tb-reg-pass').val(),
+                };
+
+                data.users.signIn(user)
+                    .then(function() {
+                        toastr.success(`Hello, ${user.username}!`);
+                        context.redirect('#/');
+                        document.location.reload(true);
+                    });
+            });
+        });
+}
+
+function register(context) {
+    templates.get('signup')
+        .then(function(template) {
+            context.$element().html(template());
+
+            $('#btn-signup').on('click', function() {
                 const user = {
                     username: $('#tb-reg-username').val(),
                     password: $('#tb-reg-pass').val(),
@@ -40,5 +60,6 @@ function register(context) {
 
 export {
     all,
+    login,
     register,
 };
