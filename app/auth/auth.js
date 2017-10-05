@@ -3,9 +3,8 @@ const applyTo = (app, data) => {
         const authKey = req.headers['x-auth-key'];
         const users = data.users.findOptions({
             authKey: authKey,
-        })
-        .toArray();
-        
+        }).toArray();
+
         req.user = users[0] || null;
         next();
     });
