@@ -21,7 +21,7 @@ function signIn(user) {
 
     return jsonRequester.put(API_URLS.LOGIN, options)
         .then(function(resp) {
-            const u = resp.result;
+            const u = resp.context;
             localStorage.setItem(KEY.STORAGE_USERNAME, u.username);
             localStorage.setItem(KEY.STORAGE_AUTHKEY, u.authKey);
             return u;
@@ -49,7 +49,8 @@ function register(user) {
             data: reqUser,
         })
         .then(function(resp) {
-            const u = resp.result;
+            console.log(resp);
+            const u = resp.context;
             localStorage.setItem(KEY.STORAGE_USERNAME, u.username);
             localStorage.setItem(KEY.STORAGE_AUTHKEY, u.authKey);
             return {

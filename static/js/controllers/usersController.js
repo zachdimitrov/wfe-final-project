@@ -21,7 +21,7 @@ function login(context) {
         .then(function(template) {
             context.$element().html(template());
 
-            $('#btn-login').on('click', function() {
+            $('#btn-send-login').on('click', function() {
                 const user = {
                     username: $('#tb-reg-username').val(),
                     password: $('#tb-reg-pass').val(),
@@ -45,7 +45,7 @@ function register(context) {
         .then(function(template) {
             context.$element().html(template());
 
-            $('#btn-register').on('click', function() {
+            $('#btn-send-signup').on('click', function() {
                 const user = {
                     username: $('#tb-reg-username').val(),
                     password: $('#tb-reg-pass').val(),
@@ -55,7 +55,6 @@ function register(context) {
 
                 data.users.register(user)
                     .then(function(u) {
-                        console.log(u);
                         toastr.success(`User ${u.username} registered!`);
                         context.redirect('#/');
                         document.location.reload(true);

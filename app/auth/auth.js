@@ -1,9 +1,12 @@
 const applyTo = (app, data) => {
     app.use('/api', function(req, res, next) {
         const authKey = req.headers['x-auth-key'];
-        req.user = data.users.findOptions({
+        const users = data.users.findOptions({
             authKey: authKey,
-        });
+        })
+        .toArray();
+        
+        req.user = users[0] || null;
         next();
     });
 };

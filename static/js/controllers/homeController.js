@@ -16,7 +16,6 @@ function all(context) {
             context.$element().html(template({ posts }));
             pageHelpers.zoomin();
             pageHelpers.slides();
-            pageHelpers.hamburger();
         })
         .catch(function(err) {
             toastr.error(err.message, 'Something very bad happened');

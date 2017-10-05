@@ -45,10 +45,11 @@
             <section id="main-quote">
                 <span id="icon-quote"></span>
                 <h1>Tennis uses the language of life. Advantage, service, fault, break, love — the basic elements of tennis are those of everyday existence, because every match is a life in miniature. </h1>
-                <a href="#" class="aditional-info">Additional info</a>
+                <a href="https://www.brainyquote.com/quotes/keywords/tennis.html" class="aditional-info">More quotes</a>
             </section>
             <section class="main-gallery">
             {{#listItem 0 4 posts}}
+                {{#if this}}
                 <div class="main-gallery-item">
                     <img src={{imageUrl}} alt={{title}} name={{title}}>
                     <span class="main-gallery-item-border"></span>
@@ -57,6 +58,7 @@
                         <a href="#/posts/{{_id}}" class="slide-link">Open Link</a>
                     </div>
                 </div>
+                {{/if}}
             {{/listItem}}
             </section>
         </div>

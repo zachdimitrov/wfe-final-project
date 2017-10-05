@@ -7,6 +7,7 @@ import * as postsController from 'postsController';
 import * as usersController from 'usersController';
 import * as homeController from 'homeController';
 import * as hbHelpers from 'handlebars-helpers';
+import * as pageHelpers from 'page-helpers';
 
 const sammyApp = new Sammy('#content', function() {
     this.get('#/', homeController.all);
@@ -18,6 +19,7 @@ const sammyApp = new Sammy('#content', function() {
 
 $(function() {
     hbHelpers.init();
+    pageHelpers.hamburger();
 
     sammyApp.run('#/');
 
