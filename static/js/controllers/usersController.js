@@ -21,7 +21,7 @@ function login(context) {
         .then(function(template) {
             context.$element().html(template());
 
-            $('#btn-continue').on('click', function() {
+            $('#btn-login').on('click', function() {
                 const user = {
                     username: $('#tb-reg-username').val(),
                     password: $('#tb-reg-pass').val(),
@@ -32,6 +32,9 @@ function login(context) {
                         toastr.success(`Hello, ${user.username}!`);
                         context.redirect('#/');
                         document.location.reload(true);
+                    })
+                    .catch(function(err) {
+                        toastr.error(err.message, 'Sorry, login failed!');
                     });
             });
         });
@@ -42,17 +45,23 @@ function register(context) {
         .then(function(template) {
             context.$element().html(template());
 
-            $('#btn-signup').on('click', function() {
+            $('#btn-register').on('click', function() {
                 const user = {
                     username: $('#tb-reg-username').val(),
                     password: $('#tb-reg-pass').val(),
+                    email: $('#tb-reg-mail').val(),
+                    role: 'regular',
                 };
 
                 data.users.register(user)
-                    .then(function() {
-                        toastr.success('User registered!');
+                    .then(function(u) {
+                        console.log(u);
+                        toastr.success(`User ${u.username} registered!`);
                         context.redirect('#/');
                         document.location.reload(true);
+                    })
+                    .catch(function(err) {
+                        toastr.error(err.message, 'Sorry sign up failed!');
                     });
             });
         });

@@ -1,7 +1,7 @@
+/* globals CryptoJS */
 /* eslint-disable new-cap */
 
 import * as jsonRequester from 'requester';
-import * as CryptoJS from 'cryptojs';
 import {
     KEY,
     API_URLS,
@@ -41,6 +41,8 @@ function register(user) {
     const reqUser = {
         username: user.username,
         passHash: CryptoJS.SHA1(user.username + user.password).toString(),
+        email: user.email,
+        role: user.role,
     };
 
     return jsonRequester.post(API_URLS.REGISTER, {
@@ -67,8 +69,25 @@ function authUser() {
 
 /* posts */
 
-function postsGet() {
-    return jsonRequester.get(API_URLS.POSTS)
+function postsGet(page, size) {
+    let q = '';
+
+    if ((page && page > 0) || (size && size > 0)) {
+        q = '?';
+    }
+
+    if (page && page > 0) {
+        q += `page=${page}`;
+    }
+
+    if (size && size > 0) {
+        if (q.length > 1) {
+            q += '&';
+        }
+        q += `size=${size}`;
+    }
+
+    return jsonRequester.get(API_URLS.POSTS + `?page=${page}&size=${size}`)
         .then(function(res) {
             return res.context;
         });

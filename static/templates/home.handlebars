@@ -48,7 +48,7 @@
                 <a href="#" class="aditional-info">Additional info</a>
             </section>
             <section class="main-gallery">
-            {{#each posts}}
+            {{#listItem 0 4 posts}}
                 <div class="main-gallery-item">
                     <img src={{imageUrl}} alt={{title}} name={{title}}>
                     <span class="main-gallery-item-border"></span>
@@ -57,6 +57,6 @@
                         <a href="#/posts/{{_id}}" class="slide-link">Open Link</a>
                     </div>
                 </div>
-            {{/each}}
+            {{/listItem}}
             </section>
         </div>

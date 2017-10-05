@@ -636,3 +636,32 @@ footer {
     color: #808080;
     float: right;
 }
+
+
+/* forms */
+
+#form-page-heading {
+    color: white;
+    font-weight: 300;
+    max-width: 960px;
+    margin: 15px auto;
+}
+
+#form-field,
+#form-route-line {
+    max-width: 960px;
+    margin: 30px auto;
+}
+
+#form-route-line a:hover {
+    font-weight: bold;
+}
+
+@media(max-width: 960px) {
+    #form-page-heading,
+    #form-field,
+    #form-route-line {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}

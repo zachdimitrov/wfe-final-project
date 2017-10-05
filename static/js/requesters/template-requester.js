@@ -1,5 +1,4 @@
-/* globals $ */
-import * as Handlebars from 'handlebars';
+/* globals $ Handlebars */
 
 const cache = {};
 

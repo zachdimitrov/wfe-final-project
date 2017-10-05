@@ -7,7 +7,7 @@ import * as pageHelpers from 'page-helpers';
 
 function all(context) {
     let posts;
-    data.posts.get()
+    data.posts.get(1, 7)
         .then(function(resPosts) {
             posts = resPosts;
             return templates.get('home');

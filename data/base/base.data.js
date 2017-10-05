@@ -21,7 +21,8 @@ class BaseData {
     }
 
     findOptions(options) {
-        return this.collection.find(options);
+        return this.collection.find(options)
+            .toArray();
     }
 
     updateById(model) {

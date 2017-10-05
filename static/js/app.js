@@ -6,6 +6,7 @@ import * as data from 'data';
 import * as postsController from 'postsController';
 import * as usersController from 'usersController';
 import * as homeController from 'homeController';
+import * as hbHelpers from 'handlebars-helpers';
 
 const sammyApp = new Sammy('#content', function() {
     this.get('#/', homeController.all);
@@ -16,6 +17,8 @@ const sammyApp = new Sammy('#content', function() {
 });
 
 $(function() {
+    hbHelpers.init();
+
     sammyApp.run('#/');
 
     if (data.users.hasUser()) {

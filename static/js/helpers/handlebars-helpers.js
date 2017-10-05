@@ -1,8 +1,13 @@
-/* globals $ */
-import * as Handlebars from 'handlebars';
+/* globals Handlebars */
 
-$(document).ready(function() {
-    Handlebars.registerHelper('index_of', function(context, ndx) {
-        return context[ndx];
+function init() {
+    Handlebars.registerHelper('listItem', function(from, to, context, options) {
+        let item = '';
+        for (let i = from, j = to; i <= j; i++) {
+            item = item + options.fn(context[i]);
+        }
+        return item;
     });
-});
+}
+
+export { init };

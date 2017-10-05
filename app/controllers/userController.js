@@ -47,6 +47,7 @@ const init = (data) => {
                     usernameToLower: user.username.toLowerCase(),
                 })
                 .then((dbUser) => {
+                    console.log(dbUser);
                     if (dbUser) {
                         return res.status(400)
                             .send('Duplicated user');
