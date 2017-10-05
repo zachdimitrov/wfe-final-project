@@ -25,7 +25,7 @@ li {
 }
 
 body {
-    background: #11161c;
+    background: #11161c url("../images/back.png") no-repeat center top;
     font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
     font-size: 13px;
 }
@@ -387,17 +387,24 @@ h4 {
 
 /* main part */
 
-main {
+#main-content {
     background: url("../images/main_back.png");
     border-top: 1px solid #ffffff;
     padding-bottom: 40px;
+}
+
+#main-content-shadow {
+    background: url("../images/main_top_shadow.png") repeat-x top left;
+    position: relative;
+    width: 100%;
+    height: 15px;
+    margin-bottom: -15px;
 }
 
 #main-about {
     max-width: 960px;
     margin: 0 auto;
     display: flex;
-    background: url("../images/main_top_shadow.png") repeat-x top left;
     padding: 70px 8% 30px;
 }
 
@@ -421,6 +428,11 @@ main {
 .main-about-content p {
     color: #808080;
     text-shadow: 1px 1px 1px #ffffff;
+}
+
+.main-about-content p a{
+    font-weight: bold;
+    color: #333;
 }
 
 @media(max-width: 920px) {

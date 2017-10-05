@@ -25,7 +25,7 @@ li {
 }
 
 body {
-    background: #11161c;
+    background: #11161c url("../images/back.png") no-repeat center top;
     font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
     font-size: 13px;
 }
@@ -387,7 +387,7 @@ h4 {
 
 /* main part */
 
-main {
+#main-content {
     background: url("../images/main_back.png");
     border-top: 1px solid #ffffff;
     padding-bottom: 40px;

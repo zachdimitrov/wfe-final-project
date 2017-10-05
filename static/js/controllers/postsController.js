@@ -10,6 +10,7 @@ function all(context) {
     data.posts.get()
         .then(function(resPosts) {
             posts = resPosts;
+            console.log(posts);
             return templates.get('posts');
         })
         .then(function(template) {
