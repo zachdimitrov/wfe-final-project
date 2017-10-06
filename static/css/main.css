@@ -73,7 +73,11 @@ h4 {
 }
 
 #navi-logo {
-    padding: 65px 15px 35px;
+    padding: 60px 15px 35px;
+}
+
+#navi-logo img {
+    height: 32px;
 }
 
 #navi-bar {
