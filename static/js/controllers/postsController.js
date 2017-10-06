@@ -3,20 +3,44 @@
 
 import * as data from 'data';
 import * as templates from 'template-requester';
+import * as pageHelpers from 'page-helpers';
 
 function all(context) {
     let posts;
     data.posts.get()
         .then(function(resPosts) {
-            posts = resPosts.sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
+            posts = resPosts
+            .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
             return templates.get('posts-all');
         })
         .then(function(template) {
             context.$element().html(template({ posts }));
         })
         .catch(function(err) {
-            toastr.error('No posts found!');
+            toastr.error(err, 'No posts found!');
         });
+}
+
+function read(context) {
+    const id = context.params.id;
+    let posts= [];
+    let post = {};
+    let ctx = {};
+    data.posts.get()
+    .then(function(resPosts) {
+        posts = resPosts
+        .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
+        post = posts.find((p) => p._id === id);
+        ctx = { posts, post };
+        return templates.get('posts-single');
+    })
+    .then(function(template) {
+        context.$element().html(template(ctx));
+        pageHelpers.zoomin();
+    })
+    .catch(function(err) {
+        toastr.error(err, 'No posts found!');
+    });
 }
 
 function add(context) {
@@ -48,4 +72,5 @@ function add(context) {
 export {
     all,
     add,
+    read,
 };

@@ -1,4 +1,4 @@
-<h1 id="form-page-heading">Stories</h1>
+<h1 id="form-page-heading">Stories{{#if posts.admin}} | <a href="/#/posts/add">Create Story</a>{{/if}}</h1>
 <div id="main-content">
     <div id="main-content-shadow"></div>
     <div id="form-route-line">
@@ -10,24 +10,24 @@
             <div class="aside-posts-container">
                 <ul>
                     {{#listItem 0 5 posts}} {{#if this}}
-                    <li>&#8226; &nbsp; <a href="/#/posts/{{_id}}">{{title}}</a> &nbsp; <i>{{date created}}</i></li>
+                    <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{title}}</a> &nbsp; <i>{{date created}}</i></li>
                     {{/if}} {{/listItem}}
                 </ul>
             </div>
         </aside>
         {{#each posts}} {{#unless isDeleted}}
         <div class="story-single-small">
-            <h1><a href="/#/posts/{{_id}}">{{title}}</a></h1>
+            <h1><a href="/#/posts/read/{{_id}}">{{title}}</a></h1>
             <hr>
             <div class="story-header">
                 <h4>
                     Posted by
-                    <a href="/#/users/{{author._id}}">
+                    <a href="/#/users/profile/{{author._id}}">
                         {{author}}
                     </a> on {{date created}} 
                     {{#if comments}} 
                     |
-                    <a href="/#/posts/{{_id}}">
+                    <a href="/#/posts/read/{{_id}}">
                         {{comments.length}} comments
                     </a>
                     {{/if}}
@@ -35,11 +35,11 @@
             </div>
             <div class="main-gallery-item">
                 <div class="main-gallery-item-shadow"></div>
-                <img src="{{imageUrl}}" alt="{{title}}">
+                <span style="background-image:url({{imageUrl}})">&nbsp;</span>
             </div>
             <div class="story-content-small">
-                <p>{{partial content 250}}</p>
-                <a class="pure-button pure-button-active" href="/#/posts/{{_id}}">Read More</a>
+                <p>{{partial content 350}}</p>
+                <a class="pure-button pure-button-active" href="/#/posts/read/{{_id}}">Read More</a>
             </div>
         </div>
         {{/unless}} {{/each}}

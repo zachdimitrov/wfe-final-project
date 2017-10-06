@@ -13,8 +13,10 @@ const sammyApp = new Sammy('#content', function() {
     this.get('#/', homeController.all);
     this.get('#/posts', postsController.all);
     this.get('#/posts/add', postsController.add);
+    this.get('#/posts/read/:id', postsController.read);
     this.get('#/users/login', usersController.login);
     this.get('#/users/signup', usersController.register);
+    this.get('#/users/profile/:id', usersController.profile);
 });
 
 $(function() {

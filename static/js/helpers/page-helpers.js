@@ -2,16 +2,18 @@
 
 function zoomin() {
     const zoom = $('.slide-zoom');
-
-    zoom.click(function(ev) {
+    zoom.click(function (ev) {
         const selected = $(ev.target).parent();
-        const img = selected.prevAll('img');
+        const img = selected.prevAll('.zoomed-image');
         const name = selected.parent().find('h2').html() || img.attr('name');
-        const src = img.attr('src');
+        const src = img.attr('link');
         const w = window.pageXOffset;
         const h = window.pageYOffset;
 
-        $('#slide-container').hide();
+        if ($('#slide-container')) {
+            $('#slide-container').hide();
+        }
+
         window.scrollTo(0, 240);
 
         if ($('.image-view').length) {
@@ -30,7 +32,9 @@ function zoomin() {
             .appendTo('header')
             .click(function(evt) {
                 $('.image-view').remove();
-                $('#slide-container').show();
+                if ($('#slide-container')) {
+                    $('#slide-container').show();
+                }
                 window.scrollTo(w, h);
             })
             .animate({
@@ -45,11 +49,11 @@ function slides() {
     const $right = $('#slide-main .slide-right-arrow');
     const len = $frames.length;
 
-    $left.click(function(ev) {
+    $left.click(function (ev) {
         moveFrames('left');
     });
 
-    $right.click(function(ev) {
+    $right.click(function (ev) {
         moveFrames('right');
     });
 
@@ -58,7 +62,7 @@ function slides() {
             const frame = $($frames[i]);
             const cls = frame.attr('class')
                 .split(' ')
-                .find(function(x) {
+                .find(function (x) {
                     return (x.indexOf('frame-') >= 0);
                 });
 
@@ -88,7 +92,7 @@ function hamburger() {
 
     crossMenu(width);
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         width = window.innerWidth;
         crossMenu(width);
     });
@@ -103,18 +107,28 @@ function hamburger() {
         }
     }
 
-    $('.hamburger').click(function() {
-        $('#menu-main').slideToggle('slow', function() {
+    $('.hamburger').click(function () {
+        $('#menu-main').slideToggle('slow', function () {
             $('.hamburger').hide();
             $('.cross').show();
         });
     });
 
-    $('.cross').click(function() {
-        $('#menu-main').slideToggle('slow', function() {
+    $('.cross').click(function () {
+        $('#menu-main').slideToggle('slow', function () {
             $('.cross').hide();
             $('.hamburger').show();
         });
+    });
+
+    $('.menu-item').click(function (ev) {
+        $('.menu-item').removeClass('selected');
+        const nextli = $(ev.target);
+        if (nextli.hasClass('menu-item')) {
+            nextli.addClass('selected');
+        } else {
+            $(nextli.parent()).addClass('selected');
+        }
     });
 }
 

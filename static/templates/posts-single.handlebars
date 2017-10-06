@@ -1,0 +1,90 @@
+<h1 id="form-page-heading">{{post.title}}</h1>
+<div id="main-content">
+  <div id="main-content-shadow"></div>
+  <div id="form-route-line">
+    <a href="#/">Home </a><span> <a href="#/posts"> / Stories </a> / {{post.title}} </span>
+  </div>
+  <section id="main-about" class="posts-content">
+    <aside>
+      <h3>Resent Stories</h3>
+      <div class="aside-posts-container">
+        <ul>
+          {{#listItem 0 5 posts}} {{#if this}}
+          <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{title}}</a> &nbsp; <i>{{date created}}</i></li>
+          {{/if}} {{/listItem}}
+        </ul>
+      </div>
+    </aside>
+    <div class="story-single-small">
+      <h1>{{post.title}}</h1>
+      <hr>
+      <div class="story-header">
+        <h4>
+          Posted by
+          <a href="/#/users/{{post.author._id}}">
+                        {{post.author}}
+                    </a> on {{date post.created}} {{#if post.comments}} |
+          <a href="/#/posts/{{_id}}">
+                        {{post.comments.length}} comments
+                    </a> {{/if}}
+        </h4>
+      </div>
+      <div class="main-gallery-item single-image">
+        <div class="main-gallery-item-shadow"></div>
+        <span class="zoomed-image" style="background-image:url({{post.imageUrl}})" link="{{post.imageUrl}}">&nbsp;</span>
+        <div class="slide-icons">
+          <a class="slide-zoom">Zoom In</a>
+        </div>
+      </div>
+      <div class="story-content-small">
+        <p>{{post.content}}</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .main-gallery-item.single-image {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 350px;
+  }
+
+  .main-gallery-item.single-image span {
+    width: 100%;
+    height: 340px;
+  }
+
+ .main-gallery-item.single-image .slide-icons {
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: inherit;
+    top: -350px;
+    z-index: 15;
+    background: rgba(255, 255, 255, 0);
+    transition: opacity .4s ease-out;
+}
+
+ .main-gallery-item.single-image .slide-icons:hover {
+    opacity: 1;
+    background: rgba(225, 225, 225, 0.4)
+}
+
+ .main-gallery-item.single-image .slide-icons a {
+    cursor: pointer;
+    height: 40px;
+    top: 150px;
+    color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+}
+
+ .main-gallery-item.single-image .slide-icons .slide-zoom {
+    background: url("../images/slider-zoom.png") no-repeat top center;
+    order: 2;
+    flex-grow: 1;
+}
+</style>
