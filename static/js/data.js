@@ -20,18 +20,18 @@ function signIn(user) {
     };
 
     return jsonRequester.put(API_URLS.LOGIN, options)
-        .then(function(resp) {
-            const u = resp.context;
-            localStorage.setItem(KEY.STORAGE_USERNAME, u.username);
-            localStorage.setItem(KEY.STORAGE_AUTHKEY, u.authKey);
+        .then((resp) => {
+            const u = resp.result;
+            sessionStorage.setItem(KEY.STORAGE_USERNAME, u.username);
+            sessionStorage.setItem(KEY.STORAGE_AUTHKEY, u.authKey);
             return u;
         });
 }
 
 function signOut() {
     const promise = new Promise(function(resolve, reject) {
-        localStorage.removeItem(KEY.STORAGE_USERNAME);
-        localStorage.removeItem(KEY.STORAGE_AUTHKEY);
+        sessionStorage.removeItem(KEY.STORAGE_USERNAME);
+        sessionStorage.removeItem(KEY.STORAGE_AUTHKEY);
         resolve();
     });
     return promise;
@@ -48,24 +48,21 @@ function register(user) {
     return jsonRequester.post(API_URLS.REGISTER, {
             data: reqUser,
         })
-        .then(function(resp) {
-            console.log(resp);
-            const u = resp.context;
-            localStorage.setItem(KEY.STORAGE_USERNAME, u.username);
-            localStorage.setItem(KEY.STORAGE_AUTHKEY, u.authKey);
+        .then((resp) => {
+            const u = resp;
             return {
-                username: resp.context.username,
+                username: u.username,
             };
         });
 }
 
 function hasUser() {
-    return !!localStorage.getItem(KEY.STORAGE_USERNAME) &&
-        !!localStorage.getItem(KEY.STORAGE_AUTHKEY);
+    return !!sessionStorage.getItem(KEY.STORAGE_USERNAME) &&
+        !!sessionStorage.getItem(KEY.STORAGE_AUTHKEY);
 }
 
 function authUser() {
-    return localStorage.getItem(KEY.STORAGE_USERNAME);
+    return sessionStorage.getItem(KEY.STORAGE_USERNAME);
 }
 
 /* posts */
@@ -89,8 +86,8 @@ function postsGet(page, size) {
     }
 
     return jsonRequester.get(API_URLS.POSTS + `?page=${page}&size=${size}`)
-        .then(function(res) {
-            return res.context;
+        .then((resp) => {
+            return resp.result;
         });
 }
 
@@ -98,13 +95,13 @@ function postsAdd(post) {
     const options = {
         data: post,
         headers: {
-            'x-auth-key': localStorage.getItem(KEY.STORAGE_AUTHKEY),
+            'x-auth-key': sessionStorage.getItem(KEY.STORAGE_AUTHKEY),
         },
     };
 
     return jsonRequester.post(API_URLS.POSTS, options)
-        .then(function(resp) {
-            return resp.context;
+        .then((resp) => {
+            return resp.result;
         });
 }
 
@@ -112,12 +109,12 @@ function postsUpdate(id, post) {
     const options = {
         data: post,
         headers: {
-            'x-auth-key': localStorage.getItem(KEY.STORAGE_AUTHKEY),
+            'x-auth-key': sessionStorage.getItem(KEY.STORAGE_AUTHKEY),
         },
     };
     return jsonRequester.put('API_URLS.POSTS' + id, options)
-        .then(function(resp) {
-            return resp.context;
+        .then((resp) => {
+            return resp.result;
         });
 }
 

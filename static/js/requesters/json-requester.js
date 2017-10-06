@@ -1,10 +1,11 @@
 /* globals $ */
+/* eslint-disable no-undefined */
 
 function send(method, url, options) {
     options = options || {};
 
     const headers = options.headers || {};
-    const data = options.data || null;
+    const data = options.data || undefined;
 
     const promise = new Promise(function(resolve, reject) {
         $.ajax({

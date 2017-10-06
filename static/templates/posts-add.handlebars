@@ -1,0 +1,84 @@
+<h1 id="form-page-heading">Create new post</h1>
+<div id="main-content">
+    <div id="main-content-shadow"></div>
+    <div id="form-route-line">
+        <a href="#/">Home </a><a href="#/posts"> / Posts</a><span> / Create</span>
+    </div>
+    <section id="form-field">
+        <div class="pure-form pure-form-aligned">
+            <fieldset>
+                <h2>Text content</h2>
+                <div class="pure-control-group">
+                    <label for="tb-post-title">Title:</label>
+                    <input class="pure-input-1-2" type="text" placeholder="post title" id="tb-post-title" />
+                </div>
+                <div class="pure-control-group">
+                    <label for="tb-post-content">Content:</label>
+                    <textarea class="pure-input-2-3" type="password" placeholder="post content" id="tb-post-content"></textarea>
+                </div>
+                <br>
+                <h2>Images</h2>
+                <div class="pure-control-group">
+                    <div>
+                        <label for="choice-url">Provide image url:</label>
+                        <input type="radio" name="image-choise" id="choice-url">
+                        <div class="reveal-if-active">
+                            <label for="tb-post-imageurl">Image url address:</label>
+                            <input class="pure-input-2-3" type="text" placeholder="http://..." id="tb-post-imageurl" />
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="choice-upload">Upload image:</label>
+                        <input type="radio" name="image-choise" id="choice-upload">
+                        <div class="reveal-if-active">
+                            <label for="tb-post-imagefile">Image file:</label>
+                            <input type="file" id="tb-post-imagefile" />
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button class="pure-button pure-button-primary" id="btn-send-post-add">Create post</button>
+            </fieldset>
+        </div>
+    </section>
+</div>
+
+<style>
+    #form-field h2 {
+        margin-bottom: 20px;
+    }
+
+    #tb-post-content {
+        height: 200px;
+    }
+
+    #btn-send-post-add {
+        background-color: #11161c;
+        border-radius: 3px;
+    }
+
+        #btn-send-post-add:hover {
+        background-color: #606060;
+    }
+
+    .reveal-if-active {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        font-size: 16px;
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+    }
+
+    input[type="radio"]:checked~.reveal-if-active {
+        opacity: 1;
+        max-height: 100px;
+        padding: 10px 20px;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        overflow: visible;
+    }
+</style>

@@ -638,7 +638,7 @@ footer {
 }
 
 
-/* forms */
+/* forms general */
 
 #form-page-heading {
     color: white;
@@ -664,4 +664,44 @@ footer {
         margin-left: 30px;
         margin-right: 30px;
     }
+}
+
+
+/* create post form */
+
+#form-field h2 {
+    margin-bottom: 20px;
+}
+
+#tb-post-content {
+    height: 200px;
+}
+
+#btn-send-post-add {
+    background-color: #11161c;
+    border-radius: 3px;
+}
+
+#btn-send-post-add:hover {
+    background-color: #606060;
+}
+
+.reveal-if-active {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    font-size: 16px;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+input[type="radio"]:checked~.reveal-if-active {
+    opacity: 1;
+    max-height: 100px;
+    padding: 10px 20px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    overflow: visible;
 }

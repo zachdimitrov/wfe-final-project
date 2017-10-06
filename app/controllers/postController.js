@@ -33,7 +33,7 @@ const init = (data) => {
                 return res
                     .status(200)
                     .send({
-                        context: result,
+                        result: result,
                     });
             });
         },
@@ -45,7 +45,7 @@ const init = (data) => {
                         .status(200)
                         .send({
                             message: 'Post successfully created!',
-                            context: post,
+                            result: post,
                         });
                 })
                 .catch((error) => {
@@ -72,7 +72,7 @@ const init = (data) => {
                     return res
                         .status(200)
                         .send({
-                            context: post,
+                            result: post,
                         });
                 });
         },
@@ -92,7 +92,7 @@ const init = (data) => {
                         .status(200)
                         .send({
                             message: 'Post successfully created!',
-                            context: post,
+                            result: post,
                         });
                 });
         },

@@ -19,7 +19,7 @@ const API_URLS = {
 const KEY = {
     HTTP_HEADER: 'x-auth-key',
     STORAGE_USERNAME: 'username',
-    STORAGE_AUTH: 'authKey',
+    STORAGE_AUTHKEY: 'authKey',
 };
 
 export {

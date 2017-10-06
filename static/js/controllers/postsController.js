@@ -27,7 +27,7 @@ function add(context) {
             return data.categories.get();
         })
         .then(function(categories) {
-            $('#btn-post-add').on('click', function() {
+            $('#btn-send-post-add').on('click', function() {
                 const author = { 'username': data.users.authUser() };
                 const post = {
                     author: author,

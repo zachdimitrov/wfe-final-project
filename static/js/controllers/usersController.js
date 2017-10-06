@@ -7,34 +7,37 @@ import * as templates from 'template-requester';
 function all(context) {
     let users;
     data.users.get()
-        .then(function(resUsers) {
+        .then((resUsers) => {
             users = resUsers;
             return templates.get('users');
         })
-        .then(function(template) {
+        .then((template) => {
             context.$element().html(template(users));
         });
 }
 
 function login(context) {
     templates.get('login')
-        .then(function(template) {
+        .then((template) => {
             context.$element().html(template());
 
-            $('#btn-send-login').on('click', function() {
+            $('#btn-send-login').on('click', () => {
                 const user = {
                     username: $('#tb-reg-username').val(),
                     password: $('#tb-reg-pass').val(),
                 };
-
                 data.users.signIn(user)
-                    .then(function() {
+                    .then(() => {
                         toastr.success(`Hello, ${user.username}!`);
-                        context.redirect('#/');
-                        document.location.reload(true);
+                        $('#btn-login').hide();
+                        $('#btn-signup').hide();
+                        $('#btn-logout').show();
+                        setTimeout(() => {
+                            context.redirect('#/');
+                        }, 500);
                     })
-                    .catch(function(err) {
-                        toastr.error(err.message, 'Sorry, login failed!');
+                    .catch((err) => {
+                        toastr.error(err, 'Sorry, login failed!');
                     });
             });
         });
@@ -42,10 +45,10 @@ function login(context) {
 
 function register(context) {
     templates.get('signup')
-        .then(function(template) {
+        .then((template) => {
             context.$element().html(template());
 
-            $('#btn-send-signup').on('click', function() {
+            $('#btn-send-signup').on('click', () => {
                 const user = {
                     username: $('#tb-reg-username').val(),
                     password: $('#tb-reg-pass').val(),
@@ -54,12 +57,13 @@ function register(context) {
                 };
 
                 data.users.register(user)
-                    .then(function(u) {
+                    .then((u) => {
                         toastr.success(`User ${u.username} registered!`);
-                        context.redirect('#/');
-                        document.location.reload(true);
+                        setTimeout(() => {
+                            context.redirect('#/');
+                        }, 500);
                     })
-                    .catch(function(err) {
+                    .catch((err) => {
                         toastr.error(err.message, 'Sorry sign up failed!');
                     });
             });
