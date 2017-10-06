@@ -1,0 +1,47 @@
+<h1 id="form-page-heading">Stories</h1>
+<div id="main-content">
+    <div id="main-content-shadow"></div>
+    <div id="form-route-line">
+        <a href="#/">Home </a><span> / Stories</span>
+    </div>
+    <section id="main-about" class="posts-content">
+        <aside>
+            <h3>Resent Stories</h3>
+            <div class="aside-posts-container">
+                <ul>
+                    {{#listItem 0 5 posts}} {{#if this}}
+                    <li>&#8226; &nbsp; <a href="/#/posts/{{_id}}">{{title}}</a> &nbsp; <i>{{date created}}</i></li>
+                    {{/if}} {{/listItem}}
+                </ul>
+            </div>
+        </aside>
+        {{#each posts}} {{#unless isDeleted}}
+        <div class="story-single-small">
+            <h1><a href="/#/posts/{{_id}}">{{title}}</a></h1>
+            <hr>
+            <div class="story-header">
+                <h4>
+                    Posted by
+                    <a href="/#/users/{{author._id}}">
+                        {{author}}
+                    </a> on {{date created}} 
+                    {{#if comments}} 
+                    |
+                    <a href="/#/posts/{{_id}}">
+                        {{comments.length}} comments
+                    </a>
+                    {{/if}}
+                </h4>
+            </div>
+            <div class="main-gallery-item">
+                <div class="main-gallery-item-shadow"></div>
+                <img src="{{imageUrl}}" alt="{{title}}">
+            </div>
+            <div class="story-content-small">
+                <p>{{partial content 250}}</p>
+                <a class="pure-button pure-button-active" href="/#/posts/{{_id}}">Read More</a>
+            </div>
+        </div>
+        {{/unless}} {{/each}}
+    </section>
+</div>

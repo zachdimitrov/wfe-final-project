@@ -8,11 +8,11 @@ function all(context) {
     let posts;
     data.posts.get()
         .then(function(resPosts) {
-            posts = resPosts;
-            return templates.get('posts');
+            posts = resPosts.sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
+            return templates.get('posts-all');
         })
         .then(function(template) {
-            context.$element().html(template(posts));
+            context.$element().html(template({ posts }));
         })
         .catch(function(err) {
             toastr.error('No posts found!');

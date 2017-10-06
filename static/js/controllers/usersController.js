@@ -60,7 +60,7 @@ function register(context) {
                     .then((u) => {
                         toastr.success(`User ${u.username} registered!`);
                         setTimeout(() => {
-                            context.redirect('#/');
+                            context.redirect('#/users/login');
                         }, 500);
                     })
                     .catch((err) => {

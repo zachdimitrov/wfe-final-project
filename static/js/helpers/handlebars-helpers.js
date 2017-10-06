@@ -1,4 +1,4 @@
-/* globals Handlebars */
+/* globals Handlebars moment */
 
 function init() {
     Handlebars.registerHelper('listItem', function(from, to, context, options) {
@@ -7,6 +7,15 @@ function init() {
             item = item + options.fn(context[i]);
         }
         return item;
+    });
+
+    Handlebars.registerHelper('date', function(datetime) {
+        const format = 'll';
+        return moment(datetime).format(format);
+    });
+
+    Handlebars.registerHelper('partial', function(text, length) {
+        return text.slice(0, length) + '...';
     });
 }
 
