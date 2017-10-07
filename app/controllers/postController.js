@@ -77,10 +77,10 @@ const init = (data) => {
                 });
         },
         put: (req, res) => {
-            const id = req.params.id;
-            return data.posts.updateById(id)
-                .then((post) => {
-                    if (!post) {
+            const post = req.body;
+            return data.posts.updateById(post)
+                .then((p) => {
+                    if (!p) {
                         return res
                             .status(404)
                             .send({
@@ -91,7 +91,7 @@ const init = (data) => {
                     return res
                         .status(200)
                         .send({
-                            message: 'Post successfully created!',
+                            message: 'Post successfully updated!',
                             result: post,
                         });
                 });

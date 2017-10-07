@@ -24,6 +24,7 @@ System.config({
         'comments-controller': 'js/controllers/comments-controller.js',
         'router': 'js/routing.js',
         'page-helpers': 'js/helpers/page-helpers.js',
+        'html-escape': 'js/helpers/html-escape.js',
         'handlebars-helpers': 'js/helpers/handlebars-helpers.js',
 
         // Library files

@@ -26,6 +26,7 @@ class BaseData {
     }
 
     updateById(model) {
+        model._id = new ObjectID(model._id);
         return this.collection.updateOne({
             _id: model._id,
         }, model);

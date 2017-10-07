@@ -20,10 +20,16 @@ function init() {
     });
 
     Handlebars.registerHelper('partial', function(text, length) {
-        if (text.length > length) {
-            return text.slice(0, length) + '...';
+        if (length <= 0 || typeof(length) !=='number') {
+            return new Handlebars.SafeString(text);
         }
-        return text;
+
+        if (text.length > length) {
+            text = text.slice(0, length) + '...';
+            return new Handlebars.SafeString(text);
+        }
+
+        return new Handlebars.SafeString(text);
     });
 
     Handlebars.registerHelper('lowercase', function(text) {

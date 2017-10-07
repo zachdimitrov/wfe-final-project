@@ -3,7 +3,7 @@
             <div id="slide-main">
               {{#each posts}}
                 <div class="slide-frame frame-{{@index}}">
-                    <span class="zoomed-image" style="background-image:url({{imageUrl}})" link="{{imageUrl}}" name="{{title}}">&nbsp;</span>
+                    <span class="zoomed-image" style="background-image:url({{{imageUrl}}})" link="{{{imageUrl}}}" name="{{title}}">&nbsp;</span>
                     <div class="slide-bottom">
                         <h2>{{title}}</h2>
                     </div>
@@ -51,7 +51,7 @@
             {{#listItem 0 4 posts}}
                 {{#if this}}
                 <div class="main-gallery-item">
-                    <span class="zoomed-image" style="background-image:url({{imageUrl}})" link="{{imageUrl}}" name="{{title}}">&nbsp;</span>
+                    <span class="zoomed-image" style="background-image:url({{{imageUrl}}})" link="{{{imageUrl}}}" name="{{title}}">&nbsp;</span>
                     <span class="main-gallery-item-border"></span>
                     <div class="slide-icons">
                         <a class="slide-zoom">Zoom In</a>

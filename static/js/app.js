@@ -8,6 +8,7 @@ import * as usersController from 'users-controller';
 import * as homeController from 'home-controller';
 import * as hbHelpers from 'handlebars-helpers';
 import * as pageHelpers from 'page-helpers';
+import { addEscape } from 'html-escape';
 
 const sammyApp = new Sammy('#content', function() {
     this.get('#/', (ctx) => homeController.all(ctx, 'home'));
@@ -24,6 +25,7 @@ const sammyApp = new Sammy('#content', function() {
 $(function() {
     hbHelpers.init();
     pageHelpers.hamburger();
+    addEscape();
 
     sammyApp.run('#/');
 

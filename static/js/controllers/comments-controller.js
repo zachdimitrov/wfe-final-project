@@ -2,11 +2,8 @@
 /* eslint-disable no-invalid-this */
 
 import * as data from 'data';
-import * as templates from 'template-requester';
-import * as pageHelpers from 'page-helpers';
 
-function add(context) {
-    const id = context.params.id;
+function add(context, id) {
     data.posts.getById(id)
         .then((post) => {
             if (!post.comments) {
@@ -17,8 +14,8 @@ function add(context) {
                 isDeleted: false,
                 created: Date.now(),
                 author: author,
-                title: $('#tb-comment-title').val(),
-                content: $('#tb-comment-content').val(),
+                title: $('#tb-comment-title').val().escape(),
+                content: $('#tb-comment-content').val().escape(),
             });
             return post;
         })
@@ -28,7 +25,8 @@ function add(context) {
         .then((p) => {
             toastr.success(`Comment added to "${p.title}"!`);
             setTimeout(() => {
-                context.redirect(`#/posts/${id}`);
+                context.redirect(`#/posts/read/${id}`);
+                document.location.reload(true);
             }, 500);
         })
         .catch(function(err) {
@@ -36,16 +34,14 @@ function add(context) {
         });
 }
 
-function del(context) {
-    const id = context.params.id;
+function toggle(context, id, deleted) {
     const commentId = context.params.commentid;
-    $('#btn-send-comment-delete').click((ev) => {
         data.posts.getById(id)
             .then((post) => {
                 const index = post
                     .comments
                     .findIndex((c) => c._id === commentId);
-                post.comments[index].isDeleted = true;
+                post.comments[index].isDeleted = deleted;
                 return post;
             })
             .then((post) => {
@@ -54,16 +50,16 @@ function del(context) {
             .then((p) => {
                 toastr.success(`Comment removed!`);
                 setTimeout(() => {
-                    context.redirect(`#/posts/${id}`);
+                    context.redirect(`#/posts/read/${id}`);
+                    document.location.reload(true);
                 }, 500);
             })
             .catch(function(err) {
                 toastr.error(err.message, 'Failed to delete!');
             });
-    });
 }
 
 export {
     add,
-    del,
+    toggle,
 };

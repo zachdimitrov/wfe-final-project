@@ -73,8 +73,11 @@ function read(context) {
             $('#btn-send-comment-add').click((ev) => {
                 commentsController.add(context, id);
             });
-            $('#btn-send-comment-delete').click((ev) => {
-                commentsController.del(context, id);
+            $('.btn-send-comment-delete').click((ev) => {
+                commentsController.toggle(context, id, true);
+            });
+            $('.btn-send-comment-restore').click((ev) => {
+                commentsController.toggle(context, id, false);
             });
         })
         .catch(function(err) {
@@ -96,9 +99,9 @@ function add(context) {
                     created: Date.now(),
                     isDeleted: false,
                     category: $('#tb-post-category').val(),
-                    title: $('#tb-post-title').val(),
-                    content: $('#tb-post-content').val(),
-                    imageUrl: $('#tb-post-imageurl').val(),
+                    title: $('#tb-post-title').val().escape(),
+                    content: $('#tb-post-content').val().escape(),
+                    imageUrl: $('#tb-post-imageurl').val().escape(),
                 };
                 return data.posts.add(post)
                     .then((p) => {

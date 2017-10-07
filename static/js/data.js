@@ -111,7 +111,7 @@ function postsGet(page, size) {
 }
 
 function postsGetById(id) {
-    return jsonRequester.get(API_URLS.POSTS + `/${id}`)
+    return jsonRequester.get(API_URLS.POSTS + id)
         .then((resp) => {
             return resp.result;
         });
@@ -138,7 +138,7 @@ function postsUpdate(id, post) {
             'x-auth-key': sessionStorage.getItem(KEY.STORAGE_AUTHKEY),
         },
     };
-    return jsonRequester.put('API_URLS.POSTS' + id, options)
+    return jsonRequester.put(API_URLS.POSTS + id, options)
         .then((resp) => {
             return resp.result;
         });

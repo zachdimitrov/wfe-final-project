@@ -23,8 +23,8 @@ function login(context) {
 
             $('#btn-send-login').on('click', () => {
                 const user = {
-                    username: $('#tb-reg-username').val(),
-                    password: $('#tb-reg-pass').val(),
+                    username: $('#tb-reg-username').val().escape(),
+                    password: $('#tb-reg-pass').val().escape(),
                 };
                 data.users.signIn(user)
                     .then(() => {
@@ -50,9 +50,9 @@ function register(context) {
 
             $('#btn-send-signup').on('click', () => {
                 const user = {
-                    username: $('#tb-reg-username').val(),
-                    password: $('#tb-reg-pass').val(),
-                    email: $('#tb-reg-mail').val(),
+                    username: $('#tb-reg-username').val().escape(),
+                    password: $('#tb-reg-pass').val().escape(),
+                    email: $('#tb-reg-mail').val().escape(),
                     role: 'regular',
                 };
 

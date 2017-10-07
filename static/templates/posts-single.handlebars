@@ -31,13 +31,13 @@
       </div>
       <div class="main-gallery-item single-image">
         <div class="main-gallery-item-shadow"></div>
-        <span class="zoomed-image" style="background-image:url({{post.imageUrl}})" link="{{post.imageUrl}}" name="{{post.title}}">&nbsp;</span>
+        <span class="zoomed-image" style="background-image:url({{{post.imageUrl}}})" link="{{{post.imageUrl}}}" name="{{{post.title}}}">&nbsp;</span>
         <div class="slide-icons">
           <a class="slide-zoom">Zoom In</a>
         </div>
       </div>
       <div class="story-content-small">
-        <p>{{post.content}}</p>
+        <p>{{{post.content}}}</p>
       </div>
     </div>
     <div class="hr"></div>
@@ -62,7 +62,7 @@
           <button class="pure-button pure-button-primary btn-send-comment-delete">Delete</button>
         {{/if}}  
 
-      <p>{{content}}</p>
+      <p>{{{content}}}</p>
       {{/if}}
 
     </div>
