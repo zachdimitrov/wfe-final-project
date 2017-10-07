@@ -3,9 +3,9 @@
 /* eslint-disable no-unused-vars */
 
 import * as data from 'data';
-import * as postsController from 'postsController';
-import * as usersController from 'usersController';
-import * as homeController from 'homeController';
+import * as postsController from 'posts-controller';
+import * as usersController from 'users-controller';
+import * as homeController from 'home-controller';
 import * as hbHelpers from 'handlebars-helpers';
 import * as pageHelpers from 'page-helpers';
 

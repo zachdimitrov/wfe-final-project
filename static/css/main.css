@@ -75,6 +75,11 @@ iframe {
     background: -webkit-gradient(linear, 0 0, 100% 0, from(#dddddd), to(#dddddd), color-stop(20%, #808080));
 }
 
+.grey-out {
+    font-style: italic;
+    color: #808080;
+}
+
 
 /* navigation menu */
 
@@ -123,6 +128,10 @@ iframe {
     color: #808080;
     font-style: italic;
     font-family: serif;
+}
+
+#menu-main li a {
+    padding: 18px 0;
 }
 
 #menu-social {

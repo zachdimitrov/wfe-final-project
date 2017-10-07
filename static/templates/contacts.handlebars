@@ -31,6 +31,7 @@
     </div>
     <div class="hr"></div>
   </section>
+  {{#if user.length}}
   <section id="comments-all">
     <h1>Send me a message</h1>
     <section id="form-field">
@@ -38,7 +39,7 @@
         <fieldset>
           <div class="pure-control-group">
             <label for="tb-message-name">Name:</label>
-            <input class="pure-input-1-2" type="text" placeholder="your name" id="tb-message-name" />
+            <input class="pure-input-1-2" type="text" value="{{user}}" id="tb-message-name" />
           </div>
           <div class="pure-control-group">
             <label for="tb-message-content">Content:</label>
@@ -50,6 +51,7 @@
       </div>
     </section>
   </section>
+  {{/if}}
 </div>
 
 <style>

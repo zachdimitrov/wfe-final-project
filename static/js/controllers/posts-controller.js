@@ -4,6 +4,7 @@
 import * as data from 'data';
 import * as templates from 'template-requester';
 import * as pageHelpers from 'page-helpers';
+import * as commentsController from 'comments-controller';
 
 function all(context) {
     let posts;
@@ -54,6 +55,7 @@ function category(context) {
 function read(context) {
     const id = context.params.id;
     const user = data.users.authUser();
+    const admin = data.users.hasAdmin();
     let posts = [];
     let post = {};
     let ctx = {};
@@ -62,12 +64,18 @@ function read(context) {
             posts = resPosts
                 .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
             post = posts.find((p) => p._id === id);
-            ctx = { user, posts, post };
+            ctx = { admin, user, posts, post };
             return templates.get('posts-single');
         })
         .then(function(template) {
             context.$element().html(template(ctx));
             pageHelpers.zoomin();
+            $('#btn-send-comment-add').click((ev) => {
+                commentsController.add(context, id);
+            });
+            $('#btn-send-comment-delete').click((ev) => {
+                commentsController.del(context, id);
+            });
         })
         .catch(function(err) {
             toastr.error(err.message, 'No posts found!');
@@ -85,6 +93,8 @@ function add(context) {
                 const author = { 'username': data.users.authUser() };
                 const post = {
                     author: author,
+                    created: Date.now(),
+                    isDeleted: false,
                     category: $('#tb-post-category').val(),
                     title: $('#tb-post-title').val(),
                     content: $('#tb-post-content').val(),

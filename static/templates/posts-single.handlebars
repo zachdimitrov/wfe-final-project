@@ -48,7 +48,23 @@
     {{#each post.comments}}
     <div class="comment-container">
       <h4><a href="/#/users/{{post.author.username}}">{{author.username}}</a>, <i>{{date created}}</i></h4>
+
+      {{#if isDeleted}}
+
+        {{#if @root.admin}}
+          <button class="pure-button pure-button-primary btn-send-comment-restore">Restore</button>
+        {{/if}}  
+
+      <p class="grey-out">Comment is removed from administrator!</p>
+      {{else}}
+
+        {{#if @root.admin}}
+          <button class="pure-button pure-button-primary btn-send-comment-delete">Delete</button>
+        {{/if}}  
+
       <p>{{content}}</p>
+      {{/if}}
+
     </div>
     {{/each}} {{else}}
     <h1>No comments</h1>
@@ -58,8 +74,8 @@
         <fieldset>
           <h2>Add comment</h2>
           <div class="pure-control-group">
-            <label for="tb-post-title">Title:</label>
-            <input class="pure-input-2-3" type="text" placeholder="comment title" id="tb-post-title" />
+            <label for="tb-comment-title">Title:</label>
+            <input class="pure-input-2-3" type="text" placeholder="comment title" id="tb-comment-title" />
           </div>
           <div class="pure-control-group">
             <label for="tb-comment-content">Content:</label>
@@ -74,3 +90,15 @@
 
   </section>
 </div>
+
+<style>
+  .btn-send-comment-delete,
+  .btn-send-comment-restore {
+    float: right;
+    margin-top: -25px;
+  }
+
+  .btn-send-comment-delete {
+    background-color: #CA3C3C;
+  }
+</style>

@@ -15,7 +15,7 @@ function init() {
     });
 
     Handlebars.registerHelper('dateXS', function(datetime) {
-        const format = 'd[/]YYYY';
+        const format = 'M[/]YYYY';
         return moment(datetime).format(format);
     });
 

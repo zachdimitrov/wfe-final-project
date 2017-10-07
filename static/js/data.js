@@ -110,6 +110,13 @@ function postsGet(page, size) {
         });
 }
 
+function postsGetById(id) {
+    return jsonRequester.get(API_URLS.POSTS + `/${id}`)
+        .then((resp) => {
+            return resp.result;
+        });
+}
+
 function postsAdd(post) {
     const options = {
         data: post,
@@ -148,6 +155,7 @@ const users = {
 
 const posts = {
     get: postsGet,
+    getById: postsGetById,
     add: postsAdd,
     update: postsUpdate,
 };
