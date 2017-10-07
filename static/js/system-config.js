@@ -21,7 +21,7 @@ System.config({
         'users-controller': 'js/controllers/users-controller.js',
         'posts-controller': 'js/controllers/posts-controller.js',
         'home-controller': 'js/controllers/home-controller.js',
-        'comments-controller': 'js/controllers/home-controller.js',
+        'comments-controller': 'js/controllers/comments-controller.js',
         'router': 'js/routing.js',
         'page-helpers': 'js/helpers/page-helpers.js',
         'handlebars-helpers': 'js/helpers/handlebars-helpers.js',

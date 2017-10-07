@@ -971,3 +971,13 @@ input[type="radio"]:checked~.reveal-if-active {
         margin: 30px 15px 30px 30px;
     }
 }
+
+.btn-send-comment-delete,
+.btn-send-comment-restore {
+    float: right;
+    margin-top: -25px;
+}
+
+.btn-send-comment-delete {
+    background-color: #CA3C3C;
+}
