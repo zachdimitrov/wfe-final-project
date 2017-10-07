@@ -89,6 +89,7 @@ const init = (data) => {
                                         result: {
                                             username: u.username,
                                             authKey: u.authKey,
+                                            role: u.role,
                                         },
                                     });
                             });
@@ -100,6 +101,7 @@ const init = (data) => {
                             result: {
                                 username: dbUser.username,
                                 authKey: dbUser.authKey,
+                                role: dbUser.role,
                             },
                         });
                 });

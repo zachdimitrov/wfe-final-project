@@ -20,6 +20,7 @@ const KEY = {
     HTTP_HEADER: 'x-auth-key',
     STORAGE_USERNAME: 'username',
     STORAGE_AUTHKEY: 'authKey',
+    ADMINISTRATOR: 'administrator',
 };
 
 export {

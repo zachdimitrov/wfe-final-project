@@ -10,6 +10,11 @@ import {
 /* users */
 
 function signIn(user) {
+    // sign out current user first
+    if (hasUser()) {
+        cleanSession();
+    }
+
     const reqUser = {
         username: user.username,
         passHash: CryptoJS.SHA1(user.username + user.password).toString(),
@@ -24,14 +29,16 @@ function signIn(user) {
             const u = resp.result;
             sessionStorage.setItem(KEY.STORAGE_USERNAME, u.username);
             sessionStorage.setItem(KEY.STORAGE_AUTHKEY, u.authKey);
+            if (u.role === 'admin') {
+                sessionStorage.setItem(KEY.ADMINISTRATOR, true);
+            }
             return u;
         });
 }
 
 function signOut() {
     const promise = new Promise(function(resolve, reject) {
-        sessionStorage.removeItem(KEY.STORAGE_USERNAME);
-        sessionStorage.removeItem(KEY.STORAGE_AUTHKEY);
+        cleanSession();
         resolve();
     });
     return promise;
@@ -59,6 +66,18 @@ function register(user) {
 function hasUser() {
     return !!sessionStorage.getItem(KEY.STORAGE_USERNAME) &&
         !!sessionStorage.getItem(KEY.STORAGE_AUTHKEY);
+}
+
+function hasAdmin() {
+    return hasUser() && !!sessionStorage.getItem(KEY.ADMINISTRATOR);
+}
+
+function cleanSession() {
+    sessionStorage.removeItem(KEY.STORAGE_USERNAME);
+    sessionStorage.removeItem(KEY.STORAGE_AUTHKEY);
+    if (sessionStorage.getItem(KEY.ADMINISTRATOR)) {
+        sessionStorage.removeItem(KEY.ADMINISTRATOR);
+    }
 }
 
 function authUser() {
@@ -123,6 +142,7 @@ const users = {
     signOut,
     register,
     hasUser,
+    hasAdmin,
     authUser,
 };
 

@@ -7,6 +7,14 @@
     <section id="form-field">
         <div class="pure-form pure-form-aligned">
             <fieldset>
+                <h2>Category</h2>
+                <div class="pure-control-group">
+                    <label for="tb-post-category">Select:</label>
+                    <select id="tb-post-category">
+                        <option>Players</option>
+                        <option>Stories</option>
+                    </select>
+                </div>
                 <h2>Text content</h2>
                 <div class="pure-control-group">
                     <label for="tb-post-title">Title:</label>
@@ -43,42 +51,3 @@
         </div>
     </section>
 </div>
-
-<style>
-    #form-field h2 {
-        margin-bottom: 20px;
-    }
-
-    #tb-post-content {
-        height: 200px;
-    }
-
-    #btn-send-post-add {
-        background-color: #11161c;
-        border-radius: 3px;
-    }
-
-        #btn-send-post-add:hover {
-        background-color: #606060;
-    }
-
-    .reveal-if-active {
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-        font-size: 16px;
-        -webkit-transform: scale(0.8);
-        transform: scale(0.8);
-        -webkit-transition: 0.5s;
-        transition: 0.5s;
-    }
-
-    input[type="radio"]:checked~.reveal-if-active {
-        opacity: 1;
-        max-height: 100px;
-        padding: 10px 20px;
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        overflow: visible;
-    }
-</style>

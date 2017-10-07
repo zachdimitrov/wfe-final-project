@@ -1,4 +1,4 @@
-<h1 id="form-page-heading">Stories{{#if posts.admin}} | <a href="/#/posts/add">Create Story</a>{{/if}}</h1>
+<h1 id="form-page-heading">Stories{{#if admin}} | <a href="/#/posts/add">Create Story</a>{{/if}}</h1>
 <div id="main-content">
     <div id="main-content-shadow"></div>
     <div id="form-route-line">
@@ -10,7 +10,7 @@
             <div class="aside-posts-container">
                 <ul>
                     {{#listItem 0 5 posts}} {{#if this}}
-                    <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{title}}</a> &nbsp; <i>{{date created}}</i></li>
+                    <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{partial title 16}}</a> &nbsp; <i>{{date created}}</i></li>
                     {{/if}} {{/listItem}}
                 </ul>
             </div>
@@ -22,8 +22,8 @@
             <div class="story-header">
                 <h4>
                     Posted by
-                    <a href="/#/users/profile/{{author._id}}">
-                        {{author}}
+                    <a href="/#/users/profile/{{author.username}}">
+                        {{author.username}}
                     </a> on {{date created}} 
                     {{#if comments}} 
                     |

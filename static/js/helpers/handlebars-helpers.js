@@ -15,7 +15,10 @@ function init() {
     });
 
     Handlebars.registerHelper('partial', function(text, length) {
-        return text.slice(0, length) + '...';
+        if (text.length > length) {
+            return text.slice(0, length) + '...';
+        }
+        return text;
     });
 }
 
