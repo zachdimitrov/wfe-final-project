@@ -1,23 +1,23 @@
-<h1 id="form-page-heading">{{post.title}}</h1>
+<h1 id="form-page-heading">{{post.category}}</h1>
 <div id="main-content">
   <div id="main-content-shadow"></div>
   <div id="form-route-line">
-    <a href="#/">Home </a><span> <a href="#/posts"> / Stories </a> / {{post.title}} </span>
+    <a href="#/">Home </a><span> <a href="#/posts/all/{{lowercase post.category}}"> / All {{post.category}} </a> / {{post.title}} </span>
   </div>
   <section id="main-about" class="posts-content">
     <aside>
-      <h3>Resent Stories</h3>
+      <h3>Resent Posts</h3>
       <div class="aside-posts-container">
         <ul>
           {{#listItem 0 5 posts}} {{#if this}}
-          <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{partial title 16}}</a> &nbsp; <i>{{date created}}</i></li>
+          <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{partial title 19}}</a> &nbsp; <i>{{dateXS created}}</i></li>
           {{/if}} {{/listItem}}
         </ul>
       </div>
     </aside>
     <div class="story-single-small">
       <h1>{{post.title}}</h1>
-      <hr>
+      <div class="hr"></div>
       <div class="story-header">
         <h4>
           Posted by
@@ -40,7 +40,7 @@
         <p>{{post.content}}</p>
       </div>
     </div>
-    <hr width="680px" align="left">
+    <div class="hr"></div>
   </section>
   <section id="comments-all">
     {{#if post.comments.length}}

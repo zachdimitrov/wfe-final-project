@@ -14,11 +14,20 @@ function init() {
         return moment(datetime).format(format);
     });
 
+    Handlebars.registerHelper('dateXS', function(datetime) {
+        const format = 'd[/]YYYY';
+        return moment(datetime).format(format);
+    });
+
     Handlebars.registerHelper('partial', function(text, length) {
         if (text.length > length) {
             return text.slice(0, length) + '...';
         }
         return text;
+    });
+
+    Handlebars.registerHelper('lowercase', function(text) {
+        return text.toLowerCase();
     });
 }
 

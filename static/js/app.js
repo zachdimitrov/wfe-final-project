@@ -10,8 +10,10 @@ import * as hbHelpers from 'handlebars-helpers';
 import * as pageHelpers from 'page-helpers';
 
 const sammyApp = new Sammy('#content', function() {
-    this.get('#/', homeController.all);
+    this.get('#/', (ctx) => homeController.all(ctx, 'home'));
+    this.get('#/contacts', (ctx) => homeController.all(ctx, 'contacts'));
     this.get('#/posts', postsController.all);
+    this.get('#/posts/all/:category', postsController.category);
     this.get('#/posts/add', postsController.add);
     this.get('#/posts/read/:id', postsController.read);
     this.get('#/users/login', usersController.login);

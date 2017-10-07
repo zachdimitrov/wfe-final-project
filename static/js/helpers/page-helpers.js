@@ -5,10 +5,14 @@ function zoomin() {
     zoom.click(function(ev) {
         const selected = $(ev.target).parent();
         const img = selected.prevAll('.zoomed-image');
-        const name = selected.parent().find('h2').html() || img.attr('name');
+        let name = selected.parent().find('h2').html() || img.attr('name');
         const src = img.attr('link');
         const w = window.pageXOffset;
         const h = window.pageYOffset;
+
+        if (name.length > 40) {
+            name = name.slice(0, 40) + '...';
+        }
 
         if ($('#slide-container')) {
             $('#slide-container').hide();

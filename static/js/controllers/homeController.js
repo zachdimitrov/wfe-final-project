@@ -5,12 +5,12 @@ import * as data from 'data';
 import * as templates from 'template-requester';
 import * as pageHelpers from 'page-helpers';
 
-function all(context) {
+function all(context, tpl) {
     let posts;
     data.posts.get(1, 7)
         .then(function(resPosts) {
             posts = resPosts;
-            return templates.get('home');
+            return templates.get(tpl);
         })
         .then(function(template) {
             context.$element().html(template({ posts }));

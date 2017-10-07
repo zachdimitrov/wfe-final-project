@@ -16,7 +16,34 @@ function all(context) {
             return templates.get('posts-all');
         })
         .then(function(template) {
-            const ctx = { admin, user, posts };
+            const ctx = { admin, user, posts, cat: '' };
+            context.$element().html(template(ctx));
+        })
+        .catch(function(err) {
+            toastr.error(err.message, 'No posts found!');
+        });
+}
+
+function category(context) {
+    let cat = context.params.category;
+    let posts;
+    const user = data.users.authUser();
+    const admin = data.users.hasAdmin();
+    data.posts.get()
+        .then(function(resPosts) {
+            posts = resPosts
+                .filter((p) => p.category.toLowerCase() === cat.toLowerCase())
+                .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
+            return templates.get('posts-all');
+        })
+        .then(function(template) {
+            if (posts) {
+                cat = posts[0].category;
+            } else {
+                cat = 'No posts';
+            }
+
+            const ctx = { admin, user, posts, cat };
             context.$element().html(template(ctx));
         })
         .catch(function(err) {
@@ -81,4 +108,5 @@ export {
     all,
     add,
     read,
+    category,
 };

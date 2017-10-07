@@ -1,16 +1,16 @@
-<h1 id="form-page-heading">Stories{{#if admin}} | <a href="/#/posts/add">Create Story</a>{{/if}}</h1>
+<h1 id="form-page-heading">All {{cat}}{{#if admin}} | <a href="/#/posts/add">Create new</a>{{/if}}</h1>
 <div id="main-content">
     <div id="main-content-shadow"></div>
     <div id="form-route-line">
-        <a href="#/">Home </a><span> / Stories</span>
+        <a href="#/">Home </a><span> / All {{cat}}</span>
     </div>
     <section id="main-about" class="posts-content">
         <aside>
-            <h3>Resent Stories</h3>
+            <h3>Resent Posts</h3>
             <div class="aside-posts-container">
                 <ul>
                     {{#listItem 0 5 posts}} {{#if this}}
-                    <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{partial title 16}}</a> &nbsp; <i>{{date created}}</i></li>
+                    <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{partial title 19}}</a> &nbsp; <i>{{dateXS created}}</i></li>
                     {{/if}} {{/listItem}}
                 </ul>
             </div>
@@ -18,7 +18,7 @@
         {{#each posts}} {{#unless isDeleted}}
         <div class="story-single-small">
             <h1><a href="/#/posts/read/{{_id}}">{{title}}</a></h1>
-            <hr>
+            <div class="hr"></div>
             <div class="story-header">
                 <h4>
                     Posted by
