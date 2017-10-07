@@ -86,6 +86,15 @@ function read(context) {
 }
 
 function add(context) {
+    const admin = data.users.hasAdmin();
+    if (!admin) {
+        toastr.error('You are not admin!', 'Access denied!');
+        setTimeout(() => {
+            context.redirect('#/posts');
+        }, 500);
+        return Promise.reject();
+    }
+
     return templates.get('posts-add')
         .then(function(template) {
             return context.$element()
