@@ -92,7 +92,7 @@ function add(context) {
         setTimeout(() => {
             context.redirect('#/posts');
         }, 500);
-        return Promise.reject();
+        return false;
     }
 
     return templates.get('posts-add')
