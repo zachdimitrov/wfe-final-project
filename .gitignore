@@ -59,3 +59,6 @@ typings/
 
 # remove design folder from git
 EnvisionedPSD/
+
+# remove build folder
+build/
