@@ -1,18 +1,21 @@
+/* csslint ids:false vendor-prefix:false order-alphabetical:false */
+
+
 /* fonts import */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
 /* general settings and normalize */
 
-html,
+a,
 body,
+div,
 h1,
 h2,
 h3,
 h4,
-a,
+html,
 p,
-div,
 span,
 ul,
 li {
@@ -635,26 +638,28 @@ iframe {
     background: url("../images/small-link.png") no-repeat top;
 }
 
+
 /* medium gallery */
 
 .main-gallery-item.medium {
     width: 280px;
     height: 210px;
-  }
+}
 
-  .main-gallery-item.medium span {
+.main-gallery-item.medium span {
     width: 280px;
-  }
+}
 
-  .main-gallery-item.medium .main-gallery-item-border {
+.main-gallery-item.medium .main-gallery-item-border {
     top: -210px;
-  }
+}
 
-  .main-gallery-item.medium .slide-icons {
+.main-gallery-item.medium .slide-icons {
     top: -424px;
     height: 210px;
-  }
-  
+}
+
+
 /* footer */
 
 footer {
@@ -826,6 +831,25 @@ input[type="radio"]:checked~.reveal-if-active {
     -webkit-transform: scale(1);
     transform: scale(1);
     overflow: visible;
+}
+
+
+/* contacts form */
+
+.contacts-content {
+    padding-top: 60px;
+    color: #808080;
+    font-size: 1.4em;
+    text-shadow: 1px 1px 1px #ffffff;
+    line-height: 2em;
+}
+
+.contacts-content a {
+    color: black;
+}
+
+.contacts-content a:hover {
+    text-decoration: underline;
 }
 
 

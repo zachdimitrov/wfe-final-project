@@ -73,7 +73,6 @@ function read(context) {
             $('#btn-send-comment-add').click((ev) => {
                 commentsController.add(context, id);
             });
-            
             $('.btn-send-comment-delete').click((ev) => {
                 context.params.commentid = $(ev.target).attr('addr');
                 commentsController.toggle(context, id, true);

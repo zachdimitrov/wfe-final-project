@@ -27,13 +27,6 @@ System.config({
         'page-helpers': 'js/helpers/page-helpers.js',
         'html-escape': 'js/helpers/html-escape.js',
         'handlebars-helpers': 'js/helpers/handlebars-helpers.js',
-
-        // Library files
-        'jquery': 'libs/jquery/dist/jquery.min.js',
-        // 'handlebars': 'libs/handlebars/dist/handlebars.min.js',
-        // 'cryptojs': 'libs/cryptojs/lib/crypto.js',
-        // 'toastr': 'libs/toastr/toastr.js',
-        // 'sammy': 'libs/sammy/lib/min/sammy-latest.min.js',
     },
 });
 

@@ -1,11 +1,11 @@
 {
-    "name": "tennis-vissions",
+    "name": "tennis-vissioned",
     "version": "1.0.0",
     "description": "wfe-final-project",
     "main": "index.js",
     "scripts": {
-        "start": "node server.js",
-        "dev": "nodemon server.js",
+        "start": "node build/server.js",
+        "dev": "nodemon build/server.js",
         "test": "test"
     },
     "repository": {
@@ -42,7 +42,20 @@
         "toastr": "^2.1.2"
     },
     "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-eslint": "^8.0.1",
+        "babel-preset-env": "^1.6.0",
+        "del": "^3.0.0",
+        "eslint": "^4.8.0",
+        "eslint-config-google": "^0.9.1",
         "gulp": "^3.9.1",
+        "gulp-babel": "^7.0.0",
+        "gulp-css": "^0.1.0",
+        "gulp-csslint": "^1.0.0",
+        "gulp-eslint": "^4.0.0",
+        "gulp-nodemon": "^2.2.1",
+        "gulp-smushit": "^1.2.0",
+        "gulp-sync": "^0.1.4",
         "nodemon": "^1.12.1"
     }
 }
