@@ -31,6 +31,7 @@
 
 ## Docker
 - [docker demo](https://www.youtube.com/watch?v=0IEJMreS9vI&index=11&list=PLF4lVL1sPDSknRqUjl1PpGbI9Izn9pBqf)
+- [install docker](https://docs.docker.com/docker-for-windows/install/#where-to-go-next)
 - [docker hub](https://hub.docker.com/r/zachdimitrov/wfe-final-project/)
 - docker pull - `docker pull zachdimitrov/wfe-final-project`
 
