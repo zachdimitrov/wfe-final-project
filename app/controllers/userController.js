@@ -3,15 +3,14 @@ const init = (data) => {
     const AUTH_KEY_CHARS =
         'qwertyuiopasdfghjklzxcvbnmWERTYUIOPASDFGHJKLZXCVBNM';
 
-    function generateAuthKey(uniquePart) {
-        const authKey = uniquePart;
+    function generateAuthKey(id) {
+        const authKey = id;
         let index;
 
         while (authKey.length < AUTH_KEY_LENGTH) {
             index = Math.floor(Math.random() * AUTH_KEY_CHARS.length);
             authKey += AUTH_KEY_CHARS[index];
         }
-
         return authKey;
     }
 
@@ -39,7 +38,8 @@ const init = (data) => {
             if (!user ||
                 typeof user.username !== 'string' ||
                 typeof user.passHash !== 'string') {
-                return res.status(400)
+                return res
+                    .status(400)
                     .send('Invalid user');
             }
 
@@ -47,7 +47,7 @@ const init = (data) => {
                     usernameToLower: user.username.toLowerCase(),
                 })
                 .then((dbUser) => {
-                    if (dbUser) {
+                    if (dbUser.length > 0) {
                         return res.status(400)
                             .send('Duplicated user');
                     }
@@ -55,12 +55,12 @@ const init = (data) => {
                     user.usernameToLower = user.username.toLowerCase();
 
                     return data.users.create(user)
-                        .then((newUser) => {
-                            return res.status(201)
-                                .send({
-                                    result: {
-                                        username: user.username,
-                                    },
+                        .then((resp) => {
+                            const newUser = resp.ops[0];
+                            return res
+                                .status(201)
+                                .json({
+                                    username: newUser.username,
                                 });
                         });
                 });
@@ -71,31 +71,39 @@ const init = (data) => {
             return data.users.findOptions({
                     usernameToLower: reqUser.username.toLowerCase(),
                 })
-                .then((dbUser) => {
-                    if (!dbUser || dbUser.passHash !== reqUser.passHash) {
-                        return res.status(404)
+                .then((resultFromDb) => {
+                    const dbUser = resultFromDb[0];
+                    if (!dbUser || (dbUser.passHash !== reqUser.passHash)) {
+                        return res
+                            .status(404)
                             .send('Invalid username or password');
                     }
 
-                    if (!dbUser.authKey) {
-                        dbUser.authKey = generateAuthKey(dbUser.id);
+                    if (!dbUser.hasOwnProperty('authKey')) {
+                        dbUser.authKey = generateAuthKey(dbUser._id);
                         return data.users.updateById(dbUser)
                             .then((u) => {
-                                return res.send({
-                                    result: {
-                                        username: u.username,
-                                        authKey: u.authKey,
-                                    },
-                                });
+                                return res
+                                    .status(200)
+                                    .send({
+                                        result: {
+                                            username: u.username,
+                                            authKey: u.authKey,
+                                            role: u.role,
+                                        },
+                                    });
                             });
                     }
 
-                    return res.send({
-                        result: {
-                            username: dbUser.username,
-                            authKey: dbUser.authKey,
-                        },
-                    });
+                    return res
+                        .status(200)
+                        .send({
+                            result: {
+                                username: dbUser.username,
+                                authKey: dbUser.authKey,
+                                role: dbUser.role,
+                            },
+                        });
                 });
         },
     };

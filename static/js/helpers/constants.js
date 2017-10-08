@@ -12,14 +12,15 @@ const ROLE = {
 const ID_LOCAL_STORAGE = 'signed-in-user-id';
 const CURRENT_POST = 'current-post-object';
 const API_URLS = {
-    LOGIN: '/api/users/',
-    REGISTER: '/api/users/',
-    POSTS: '/api/posts/',
+    LOGIN: 'api/users/',
+    REGISTER: 'api/users/',
+    POSTS: 'api/posts/',
 };
 const KEY = {
     HTTP_HEADER: 'x-auth-key',
     STORAGE_USERNAME: 'username',
-    STORAGE_AUTH: 'authKey',
+    STORAGE_AUTHKEY: 'authKey',
+    ADMINISTRATOR: 'administrator',
 };
 
 export {

@@ -21,10 +21,12 @@ class BaseData {
     }
 
     findOptions(options) {
-        return this.collection.find(options);
+        return this.collection.find(options)
+            .toArray();
     }
 
     updateById(model) {
+        model._id = new ObjectID(model._id);
         return this.collection.updateOne({
             _id: model._id,
         }, model);

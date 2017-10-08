@@ -1,0 +1,47 @@
+<h1 id="form-page-heading">All {{cat}}{{#if admin}} | <a href="/#/posts/add">Create new</a>{{/if}}</h1>
+<div id="main-content">
+    <div id="main-content-shadow"></div>
+    <div id="form-route-line">
+        <a href="#/">Home </a><span> / All {{cat}}</span>
+    </div>
+    <section id="main-about" class="posts-content">
+        <aside>
+            <h3>Resent Posts</h3>
+            <div class="aside-posts-container">
+                <ul>
+                    {{#listItem 0 5 posts}} {{#if this}}
+                    <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{partial title 19}}</a> &nbsp; <i>{{dateXS created}}</i></li>
+                    {{/if}} {{/listItem}}
+                </ul>
+            </div>
+        </aside>
+        {{#each posts}} {{#unless isDeleted}}
+        <div class="story-single-small">
+            <h1><a href="/#/posts/read/{{_id}}">{{title}}</a></h1>
+            <div class="hr"></div>
+            <div class="story-header">
+                <h4>
+                    Posted by
+                    <a href="/#/users/comments/{{author.username}}">
+                        {{author.username}}
+                    </a> on {{date created}} 
+                    {{#if comments}} 
+                    |
+                    <a href="/#/posts/read/{{_id}}">
+                        {{comments.length}} comments
+                    </a>
+                    {{/if}}
+                </h4>
+            </div>
+            <div class="main-gallery-item">
+                <div class="main-gallery-item-shadow"></div>
+                <span style="background-image:url({{{imageUrl}}})">&nbsp;</span>
+            </div>
+            <div class="story-content-small">
+                <p>{{partial content 350}}</p>
+                <a class="pure-button pure-button-active" href="/#/posts/read/{{_id}}">Read More</a>
+            </div>
+        </div>
+        {{/unless}} {{/each}}
+    </section>
+</div>

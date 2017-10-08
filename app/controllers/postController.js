@@ -33,7 +33,7 @@ const init = (data) => {
                 return res
                     .status(200)
                     .send({
-                        context: result,
+                        result: result,
                     });
             });
         },
@@ -45,7 +45,7 @@ const init = (data) => {
                         .status(200)
                         .send({
                             message: 'Post successfully created!',
-                            context: post,
+                            result: post,
                         });
                 })
                 .catch((error) => {
@@ -72,15 +72,15 @@ const init = (data) => {
                     return res
                         .status(200)
                         .send({
-                            context: post,
+                            result: post,
                         });
                 });
         },
         put: (req, res) => {
-            const id = req.params.id;
-            return data.posts.updateById(id)
-                .then((post) => {
-                    if (!post) {
+            const post = req.body;
+            return data.posts.updateById(post)
+                .then((p) => {
+                    if (!p) {
                         return res
                             .status(404)
                             .send({
@@ -91,8 +91,8 @@ const init = (data) => {
                     return res
                         .status(200)
                         .send({
-                            message: 'Post successfully created!',
-                            context: post,
+                            message: 'Post successfully updated!',
+                            result: post,
                         });
                 });
         },

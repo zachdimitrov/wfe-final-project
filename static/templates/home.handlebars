@@ -1,1 +1,64 @@
-<h1>Check if it woks</h1>
+
+        <section id="slide-container">
+            <div id="slide-main">
+              {{#each posts}}
+                <div class="slide-frame frame-{{@index}}">
+                    <span class="zoomed-image" style="background-image:url({{{imageUrl}}})" link="{{{imageUrl}}}" name="{{title}}">&nbsp;</span>
+                    <div class="slide-bottom">
+                        <h2>{{title}}</h2>
+                    </div>
+                    <div class="slide-icons">
+                        <a class="slide-left-arrow">Left</a>
+                        <a class="slide-zoom">Zoom in</a>
+                        <a href="#/posts/read/{{_id}}" class="slide-link">Open link</a>
+                        <a class="slide-right-arrow">Right</a>
+                    </div>
+                </div>
+            {{/each}}
+            </div>
+        </section>
+        <div id="main-content">
+          <div id="main-content-shadow"></div>
+            <section id="main-about">
+                <article class="main-present">
+                    <img src="../images/wrench.png" alt="wrench">
+                    <div class="main-about-content">
+                        <h3>Services</h3>
+                        <p>This is a place where you can read interesting info about tennis players. Regularly we post about famous ATP ot WTA stars but we feature uprising tallents too. So stop by and have fun reading our stories. </p>
+                    </div>
+                </article>
+                <article class="main-present">
+                    <img src="../images/bubble.png" alt="bubble">
+                    <div class="main-about-content">
+                        <h3>Contact</h3>
+                        <p>If you like us to feature a player or correct some info in our articles, please do not hesitate to <a href="#/contacts">contact</a> us. We will be happy to serve your needs. Thank you for youur collaboration in making this web site mutch better.</p>
+                    </div>
+                </article>
+                <article class="main-present">
+                    <img src="../images/notes.png" alt="notes">
+                    <div class="main-about-content">
+                        <h3>Media</h3>
+                        <p>Many ot the photos provided here are randomly selected from internet. If you have your own photos of players an wish to see them in our <a href="#/gallery">gallery</a>, please e-mail us. You can find or e-mail address in our <a href="#/contacts">contact</a> page.</p>
+                    </div>
+                </article>
+            </section>
+            <section id="main-quote">
+                <span id="icon-quote"></span>
+                <h1>Tennis uses the language of life. Advantage, service, fault, break, love — the basic elements of tennis are those of everyday existence, because every match is a life in miniature. </h1>
+                <a href="https://www.brainyquote.com/quotes/keywords/tennis.html" class="aditional-info">More quotes</a>
+            </section>
+            <section class="main-gallery">
+            {{#listItem 0 4 posts}}
+                {{#if this}}
+                <div class="main-gallery-item">
+                    <span class="zoomed-image" style="background-image:url({{{imageUrl}}})" link="{{{imageUrl}}}" name="{{title}}">&nbsp;</span>
+                    <span class="main-gallery-item-border"></span>
+                    <div class="slide-icons">
+                        <a class="slide-zoom">Zoom In</a>
+                        <a href="#/posts/read/{{_id}}" class="slide-link">Open Link</a>
+                    </div>
+                </div>
+                {{/if}}
+            {{/listItem}}
+            </section>
+        </div>

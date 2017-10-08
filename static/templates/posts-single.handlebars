@@ -1,0 +1,92 @@
+<h1 id="form-page-heading">{{post.category}}</h1>
+<div id="main-content">
+  <div id="main-content-shadow"></div>
+  <div id="form-route-line">
+    <a href="#/">Home </a><span> <a href="#/posts/all/{{lowercase post.category}}"> / All {{post.category}} </a> / {{post.title}} </span>
+  </div>
+  <section id="main-about" class="posts-content">
+    <aside>
+      <h3>Resent Posts</h3>
+      <div class="aside-posts-container">
+        <ul>
+          {{#listItem 0 5 posts}} {{#if this}}
+          <li>&#8226; &nbsp; <a href="/#/posts/read/{{_id}}">{{partial title 19}}</a> &nbsp; <i>{{dateXS created}}</i></li>
+          {{/if}} {{/listItem}}
+        </ul>
+      </div>
+    </aside>
+    <div class="story-single-small">
+      <h1>{{post.title}}</h1>
+      <div class="hr"></div>
+      <div class="story-header">
+        <h4>
+          Posted by
+          <a href="/#/users/comments/{{post.author.username}}">
+                        {{post.author.username}}
+                    </a> on {{date post.created}} {{#if post.comments}} |
+          <a href="/#/posts/{{_id}}">
+                        {{post.comments.length}} comments
+                    </a> {{/if}}
+        </h4>
+      </div>
+      <div class="main-gallery-item single-image">
+        <div class="main-gallery-item-shadow"></div>
+        <span class="zoomed-image" style="background-image:url({{{post.imageUrl}}})" link="{{{post.imageUrl}}}" name="{{{post.title}}}">&nbsp;</span>
+        <div class="slide-icons">
+          <a class="slide-zoom">Zoom In</a>
+        </div>
+      </div>
+      <div class="story-content-small">
+        <p>{{{post.content}}}</p>
+      </div>
+    </div>
+    <div class="hr"></div>
+  </section>
+  <section id="comments-all">
+    {{#if post.comments.length}}
+    <h1>{{post.comments.length}} comments</h1>
+    {{#each post.comments}}
+    <div class="comment-container">
+      <h4><a href="/#/users/comments/{{author.username}}">{{author.username}}</a>, <i>{{date created}}</i></h4>
+
+      {{#if isDeleted}}
+
+        {{#if @root.admin}}
+          <button class="pure-button pure-button-primary btn-send-comment-restore" addr="{{created}}">Restore</button>
+        {{/if}}  
+
+      <p class="grey-out">Comment is removed from administrator!</p>
+      {{else}}
+
+        {{#if @root.admin}}
+          <button class="pure-button pure-button-primary btn-send-comment-delete" addr="{{created}}">Delete</button>
+        {{/if}}  
+
+      <p>{{{content}}}</p>
+      {{/if}}
+
+    </div>
+    {{/each}} {{else}}
+    <h1>No comments</h1>
+    {{/if}} {{#if user}}
+    <section id="form-field">
+      <div class="pure-form pure-form-aligned">
+        <fieldset>
+          <h2>Add comment</h2>
+          <div class="pure-control-group">
+            <label for="tb-comment-title">Title:</label>
+            <input class="pure-input-2-3" type="text" placeholder="comment title" id="tb-comment-title" />
+          </div>
+          <div class="pure-control-group">
+            <label for="tb-comment-content">Content:</label>
+            <textarea class="pure-input-2-3" type="password" placeholder="comment content" id="tb-comment-content"></textarea>
+          </div>
+          <br>
+          <button class="pure-button pure-button-primary" id="btn-send-comment-add">Send comment</button>
+        </fieldset>
+      </div>
+    </section>
+    {{/if}}
+
+  </section>
+</div>
