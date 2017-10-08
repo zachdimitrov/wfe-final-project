@@ -29,6 +29,11 @@
 ## Test
 - TODO
 
+## Docker
+- [docker demo](https://www.youtube.com/watch?v=0IEJMreS9vI&index=11&list=PLF4lVL1sPDSknRqUjl1PpGbI9Izn9pBqf)
+- [docker hub](https://hub.docker.com/r/zachdimitrov/wfe-final-project/)
+- docker pull - `docker pull zachdimitrov/wfe-final-project`
+
 ## Author
 [Zahari Dimitov](https://telerikacademy.com/Users/ZachD) - **ZachD**   
 [github profile](https://github.com/zachdimitrov)  
