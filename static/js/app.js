@@ -6,6 +6,7 @@ import * as data from 'data';
 import * as postsController from 'posts-controller';
 import * as usersController from 'users-controller';
 import * as homeController from 'home-controller';
+import * as galleryController from 'gallery-controller';
 import * as hbHelpers from 'handlebars-helpers';
 import * as pageHelpers from 'page-helpers';
 import { addEscape } from 'html-escape';
@@ -13,13 +14,15 @@ import { addEscape } from 'html-escape';
 const sammyApp = new Sammy('#content', function() {
     this.get('#/', (ctx) => homeController.all(ctx, 'home'));
     this.get('#/contacts', (ctx) => homeController.all(ctx, 'contacts'));
+    this.get('#/gallery/:size', galleryController.all);
     this.get('#/posts', postsController.all);
     this.get('#/posts/all/:category', postsController.category);
     this.get('#/posts/add', postsController.add);
     this.get('#/posts/read/:id', postsController.read);
     this.get('#/users/login', usersController.login);
     this.get('#/users/signup', usersController.register);
-    this.get('#/users/profile/:id', usersController.profile);
+    this.get('#/users/profile', usersController.account);
+    this.get('#/users/comments/:username', usersController.userComments);
 });
 
 $(function() {

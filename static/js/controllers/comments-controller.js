@@ -4,7 +4,7 @@
 import * as data from 'data';
 
 function add(context, id) {
-    data.posts.getById(id)
+   data.posts.getById(id)
         .then((post) => {
             if (!post.comments) {
                 post.comments = [];
@@ -36,12 +36,13 @@ function add(context, id) {
 
 function toggle(context, id, deleted) {
     const commentId = context.params.commentid;
-        data.posts.getById(id)
+    console.log(commentId);
+       data.posts.getById(id)
             .then((post) => {
-                const index = post
+                const p = post
                     .comments
-                    .findIndex((c) => c._id === commentId);
-                post.comments[index].isDeleted = deleted;
+                    .find((c) => c.created === commentId);
+                p.isDeleted = deleted;
                 return post;
             })
             .then((post) => {

@@ -73,10 +73,15 @@ function read(context) {
             $('#btn-send-comment-add').click((ev) => {
                 commentsController.add(context, id);
             });
+            let iid;
             $('.btn-send-comment-delete').click((ev) => {
+                iid = $(ev.target).attr('addr');
+                context.params.commentid = iid;
                 commentsController.toggle(context, id, true);
             });
             $('.btn-send-comment-restore').click((ev) => {
+                iid = $(ev.target).attr('addr');
+                context.params.commentid = iid;
                 commentsController.toggle(context, id, false);
             });
         })

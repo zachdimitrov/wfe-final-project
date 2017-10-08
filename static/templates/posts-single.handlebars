@@ -21,7 +21,7 @@
       <div class="story-header">
         <h4>
           Posted by
-          <a href="/#/users/{{post.author.username}}">
+          <a href="/#/users/comments/{{post.author.username}}">
                         {{post.author.username}}
                     </a> on {{date post.created}} {{#if post.comments}} |
           <a href="/#/posts/{{_id}}">
@@ -47,19 +47,19 @@
     <h1>{{post.comments.length}} comments</h1>
     {{#each post.comments}}
     <div class="comment-container">
-      <h4><a href="/#/users/{{post.author.username}}">{{author.username}}</a>, <i>{{date created}}</i></h4>
+      <h4><a href="/#/users/comments/{{author.username}}">{{author.username}}</a>, <i>{{date created}}</i></h4>
 
       {{#if isDeleted}}
 
         {{#if @root.admin}}
-          <button class="pure-button pure-button-primary btn-send-comment-restore">Restore</button>
+          <button class="pure-button pure-button-primary btn-send-comment-restore" addr="{{created}}">Restore</button>
         {{/if}}  
 
       <p class="grey-out">Comment is removed from administrator!</p>
       {{else}}
 
         {{#if @root.admin}}
-          <button class="pure-button pure-button-primary btn-send-comment-delete">Delete</button>
+          <button class="pure-button pure-button-primary btn-send-comment-delete" addr="{{ceated}}">Delete</button>
         {{/if}}  
 
       <p>{{{content}}}</p>
