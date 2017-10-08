@@ -4,7 +4,7 @@ const init = (data) => {
         'qwertyuiopasdfghjklzxcvbnmWERTYUIOPASDFGHJKLZXCVBNM';
 
     function generateAuthKey(id) {
-        const authKey = id;
+        let authKey = id;
         let index;
 
         while (authKey.length < AUTH_KEY_LENGTH) {
