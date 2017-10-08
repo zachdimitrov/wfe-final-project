@@ -8,4 +8,4 @@ COPY . /var/www
 
 EXPOSE 3003
 
-CMD ["npm", "start"]
+CMD ["npm", "install", "&&", "gulp"]
