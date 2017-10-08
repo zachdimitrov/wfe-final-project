@@ -36,12 +36,11 @@ function add(context, id) {
 
 function toggle(context, id, deleted) {
     const commentId = context.params.commentid;
-    console.log(commentId);
        data.posts.getById(id)
             .then((post) => {
                 const p = post
                     .comments
-                    .find((c) => c.created === commentId);
+                    .find((c) => c.created === +commentId);
                 p.isDeleted = deleted;
                 return post;
             })
@@ -49,7 +48,9 @@ function toggle(context, id, deleted) {
                 return data.posts.update(id, post);
             })
             .then((p) => {
-                toastr.success(`Comment removed!`);
+                const r = 'deleted';
+                const s = 'restored';
+                toastr.success(`Comment ${deleted?r:s}!`);
                 setTimeout(() => {
                     context.redirect(`#/posts/read/${id}`);
                     document.location.reload(true);

@@ -108,12 +108,12 @@ function userComments(context) {
         context.$element().html(template({ admin, user, comments }));
         let id;
         $('.btn-send-comment-delete').click((ev) => {
-            context.params.commentid = $(ev.target).addr('parr');
+            context.params.commentid = $(ev.target).attr('addr');
             id = $(ev.target).attr('parr');
             commentsController.toggle(context, id, true);
         });
         $('.btn-send-comment-restore').click((ev) => {
-            context.params.commentid = $(ev.target).addr('parr');
+            context.params.commentid = $(ev.target).attr('addr');
             id = $(ev.target).attr('parr');
             commentsController.toggle(context, id, false);
         });
