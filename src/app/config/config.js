@@ -9,7 +9,7 @@ const applyTo = (app) => {
     }));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(express.static('src/static'));
+    app.use(express.static('build/static' || 'src/static'));
     app.use('/libs', express.static('node_modules'));
 };
 
