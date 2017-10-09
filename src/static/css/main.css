@@ -1,11 +1,14 @@
 /* csslint ids:false vendor-prefix:false order-alphabetical:false */
 
-
-/* fonts import */
-
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
+/*================================*/
+
+
 /* general settings and normalize */
+
+
+/*================================*/
 
 a,
 body,
@@ -15,10 +18,10 @@ h2,
 h3,
 h4,
 html,
+li,
 p,
 span,
-ul,
-li {
+ul {
     margin: 0;
     padding: 0;
     border: 0;
@@ -84,7 +87,13 @@ iframe {
 }
 
 
-/* navigation menu */
+/*================================*/
+
+
+/* navigation menu                */
+
+
+/*================================*/
 
 #navi-container {
     position: relative;
@@ -264,7 +273,13 @@ iframe {
 }
 
 
-/* slider section */
+/*============================*/
+
+
+/* slider section             */
+
+
+/*============================*/
 
 #slide-container {
     display: block;
@@ -372,28 +387,24 @@ iframe {
 
 .slide-frame.frame-0 .slide-icons .slide-left-arrow {
     background: url("../images/slider-left.png") no-repeat top;
-    /* left: 8%; */
     order: 1;
     flex-grow: 1;
 }
 
 .slide-frame.frame-0 .slide-icons .slide-zoom {
     background: url("../images/slider-zoom.png") no-repeat top right;
-    /* left: 35%; */
     order: 2;
     flex-grow: 1;
 }
 
 .slide-frame.frame-0 .slide-icons .slide-link {
     background: url("../images/slider-link.png") no-repeat top left;
-    /* left: 50%; */
     order: 3;
     flex-grow: 1;
 }
 
 .slide-frame.frame-0 .slide-icons .slide-right-arrow {
     background: url("../images/slider-right.png") no-repeat top;
-    /* left: 85%; */
     order: 4;
     flex-grow: 1;
 }
@@ -460,7 +471,13 @@ iframe {
 }
 
 
-/* main part */
+/*============================*/
+
+
+/* main part                  */
+
+
+/*============================*/
 
 #main-content {
     background: url("../images/main_back.png");
@@ -522,7 +539,13 @@ iframe {
 }
 
 
-/* main part - quote */
+/*============================*/
+
+
+/* main part - quote          */
+
+
+/*============================*/
 
 #main-quote {
     background: #ffffff;
@@ -568,7 +591,13 @@ iframe {
 }
 
 
-/* gallery part */
+/*============================*/
+
+
+/* gallery part               */
+
+
+/*============================*/
 
 .main-gallery {
     max-width: 960px;
@@ -639,7 +668,13 @@ iframe {
 }
 
 
-/* medium gallery */
+/*============================*/
+
+
+/* medium gallery             */
+
+
+/*============================*/
 
 .main-gallery-item.medium {
     width: 280px;
@@ -660,7 +695,13 @@ iframe {
 }
 
 
-/* footer */
+/*============================*/
+
+
+/* footer                     */
+
+
+/*============================*/
 
 footer {
     background: url("../images/back.png") no-repeat center top;
@@ -711,7 +752,13 @@ footer {
 }
 
 
-/* open image */
+/*============================*/
+
+
+/* open image                 */
+
+
+/*============================*/
 
 .image-view {
     width: 20%;
@@ -735,7 +782,13 @@ footer {
 }
 
 
-/* forms general */
+/*============================*/
+
+
+/* forms general              */
+
+
+/*============================*/
 
 #form-page-heading {
     color: white;
@@ -759,7 +812,13 @@ footer {
 }
 
 
-/* override purecss settings */
+/*============================*/
+
+
+/* override purecss settings  */
+
+
+/*============================*/
 
 .pure-form select {
     height: 35px;
@@ -785,7 +844,13 @@ footer {
 }
 
 
+/*============================*/
+
+
 /* create post, comment forms */
+
+
+/*============================*/
 
 #form-field h2 {
     margin-bottom: 20px;
@@ -834,7 +899,13 @@ input[type="radio"]:checked~.reveal-if-active {
 }
 
 
-/* contacts form */
+/*======================*/
+
+
+/* contacts form        */
+
+
+/*======================*/
 
 .contacts-content {
     padding-top: 60px;
@@ -853,7 +924,13 @@ input[type="radio"]:checked~.reveal-if-active {
 }
 
 
-/* posts page styles */
+/*======================*/
+
+
+/* posts page styles    */
+
+
+/*======================*/
 
 #main-about.posts-content {
     display: inherit;
@@ -958,7 +1035,13 @@ input[type="radio"]:checked~.reveal-if-active {
 }
 
 
-/* single story page */
+/*======================*/
+
+
+/* single story page    */
+
+
+/*======================*/
 
 .main-gallery-item.single-image {
     box-sizing: border-box;
@@ -1005,7 +1088,13 @@ input[type="radio"]:checked~.reveal-if-active {
 }
 
 
-/* comments part*/
+/*======================*/
+
+
+/* comments part        */
+
+
+/*======================*/
 
 #comments-all {
     max-width: 960px;
