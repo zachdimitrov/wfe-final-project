@@ -7,6 +7,9 @@ const del = require('del');
 const cssMin = require('gulp-css');
 const smushit = require('gulp-smushit');
 const nodemon = require('gulp-nodemon');
+const shell = require('gulp-shell');
+
+const buildPath = '../wfe-heroku-deploy/tennis-vissioned/build';
 
 gulp.task('default', () => {});
 
@@ -30,7 +33,7 @@ gulp.task('lint', ['lint:js', 'lint:css']);
 // clean
 
 gulp.task('clean', () => {
-    return del('build/');
+    return del(buildPath, { force: true });
 });
 
 // compile
@@ -40,19 +43,19 @@ gulp.task('compile:js', () => {
         .pipe(babel({
             presets: ['env'],
         }))
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest(buildPath));
 });
 
 gulp.task('compile:css', () => {
     return gulp.src('src/**/*.css')
         .pipe(cssMin())
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest(buildPath));
 });
 
 gulp.task('compile:img', () => {
     return gulp.src(['src/**/images/*', '!players/'])
         .pipe(smushit())
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest(buildPath));
 });
 
 gulp.task('compile', ['compile:js', 'compile:css', 'compile:img']);
@@ -61,7 +64,7 @@ gulp.task('compile', ['compile:js', 'compile:css', 'compile:img']);
 
 gulp.task('copy', () => {
     return gulp.src(['src/**/*.html', 'src/**/*.handlebars', 'src/**/*.ico'])
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest(buildPath));
 });
 
 // build
@@ -70,7 +73,7 @@ gulp.task('build', gulpsync.sync(['clean', 'lint', 'compile', 'copy']));
 
 // start
 
-gulp.task('dev:start', () => {
+gulp.task('dev', () => {
     nodemon({
         script: 'src/server.js',
         ext: 'js html',
@@ -80,10 +83,20 @@ gulp.task('dev:start', () => {
 
 gulp.task('prod:start', () => {
     nodemon({
-        script: 'build/server.js',
+        script: buildPath + '/server.js',
         ext: 'js html',
         env: { 'NODE_ENV': 'production' },
     });
 });
 
 gulp.task('start', gulpsync.sync(['build', 'prod:start']));
+
+// deploy
+
+gulp.task('deploy', shell.task([
+    'git add .',
+    `git commit -am "deploy version ${new Date().toString()}"`,
+    'git push heroku master',
+]));
+
+gulp.task('deploy', gulpsync.sync(['build', 'deploy']));
