@@ -32,7 +32,7 @@ function login(context) {
                         toastr.success(`Hello, ${user.username}!`);
                         $('#btn-login').hide();
                         $('#btn-signup').hide();
-                        $('#btn-logout').show();
+                        $('#btn-account').show();
                         setTimeout(() => {
                             context.redirect('#/');
                         }, 500);
@@ -74,9 +74,9 @@ function register(context) {
 function account(context) {
     const user = data.users.authUser();
     templates.get('account')
-    .then((template) => {
-        context.$element().html(template({ user }));
-    });
+        .then((template) => {
+            context.$element().html(template({ user }));
+        });
 }
 
 function userComments(context) {
@@ -85,39 +85,39 @@ function userComments(context) {
     const comments = [];
 
     return data.posts.get()
-    .then((posts) => {
-        posts.forEach((p) => {
-            if (p.comments) {
-                const id = p._id;
-                const filtered = p.comments
-                .filter((x) => x.author.username === user);
-                if (filtered.length > 0) {
-                    filtered.forEach((f) => {
-                        comments.push({ f, id });
-                    });
+        .then((posts) => {
+            posts.forEach((p) => {
+                if (p.comments) {
+                    const id = p._id;
+                    const filtered = p.comments
+                        .filter((x) => x.author.username === user);
+                    if (filtered.length > 0) {
+                        filtered.forEach((f) => {
+                            comments.push({ f, id });
+                        });
+                    }
                 }
-            }
-        });
+            });
 
-        return Promise.resolve(comments);
-    })
-    .then(() => {
-        return templates.get('user-comments');
-    })
-    .then((template) => {
-        context.$element().html(template({ admin, user, comments }));
-        let id;
-        $('.btn-send-comment-delete').click((ev) => {
-            context.params.commentid = $(ev.target).attr('addr');
-            id = $(ev.target).attr('parr');
-            commentsController.toggle(context, id, true);
+            return Promise.resolve(comments);
+        })
+        .then(() => {
+            return templates.get('user-comments');
+        })
+        .then((template) => {
+            context.$element().html(template({ admin, user, comments }));
+            let id;
+            $('.btn-send-comment-delete').click((ev) => {
+                context.params.commentid = $(ev.target).attr('addr');
+                id = $(ev.target).attr('parr');
+                commentsController.toggle(context, id, true);
+            });
+            $('.btn-send-comment-restore').click((ev) => {
+                context.params.commentid = $(ev.target).attr('addr');
+                id = $(ev.target).attr('parr');
+                commentsController.toggle(context, id, false);
+            });
         });
-        $('.btn-send-comment-restore').click((ev) => {
-            context.params.commentid = $(ev.target).attr('addr');
-            id = $(ev.target).attr('parr');
-            commentsController.toggle(context, id, false);
-        });
-    });
 }
 
 export {

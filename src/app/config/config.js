@@ -4,7 +4,7 @@ const mongoMorgan = require('mongo-morgan');
 const config = require('../../config');
 
 const applyTo = (app) => {
-    app.use(mongoMorgan(config.connectionString, 'combined', {
+    app.use(mongoMorgan(config.connectionString.deploy, 'combined', {
         collection: 'logs',
     }));
     app.use(bodyParser.json());

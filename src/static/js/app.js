@@ -35,9 +35,9 @@ $(function() {
     if (data.users.hasUser()) {
         $('#btn-login').hide();
         $('#btn-signup').hide();
-        $('#btn-logout').show();
+        $('#btn-account').show();
     } else {
-        $('#btn-logout').hide();
+        $('#btn-account').hide();
         $('#btn-signup').show();
         $('#btn-login').show();
     }
@@ -47,7 +47,7 @@ $(function() {
         data.users.signOut()
             .then(function() {
                 toastr.success('Signed out successfully.', 'Good bye!');
-                $('#btn-logout').hide();
+                $('#btn-account').hide();
                 $('#btn-signup').show();
                 $('#btn-login').show();
                 document.location = '#/';

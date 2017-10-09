@@ -110,7 +110,7 @@ function add(context) {
                     created: Date.now(),
                     isDeleted: false,
                     category: $('#tb-post-category').val(),
-                    title: $('#tb-post-title').val().escape(),
+                    title: $('#tb-post-title').val().escape() || 'No title',
                     content: $('#tb-post-content').val().escape(),
                     imageUrl: $('#tb-post-imageurl').val().escape(),
                 };

@@ -8,7 +8,7 @@ const cssMin = require('gulp-css');
 const smushit = require('gulp-smushit');
 const nodemon = require('gulp-nodemon');
 
-gulp.task('default', gulpsync.sync(['build', 'start']));
+gulp.task('default', () => {});
 
 // lint
 
@@ -60,7 +60,7 @@ gulp.task('compile', ['compile:js', 'compile:css', 'compile:img']);
 // copy
 
 gulp.task('copy', () => {
-    return gulp.src(['src/**/*.html', 'src/**/*.handlebars'])
+    return gulp.src(['src/**/*.html', 'src/**/*.handlebars', 'src/**/*.ico'])
         .pipe(gulp.dest('build/'));
 });
 
@@ -70,10 +70,20 @@ gulp.task('build', gulpsync.sync(['clean', 'lint', 'compile', 'copy']));
 
 // start
 
-gulp.task('start', () => {
+gulp.task('dev:start', () => {
     nodemon({
-        script: 'build/server.js',
+        script: 'src/server.js',
         ext: 'js html',
         env: { 'NODE_ENV': 'development' },
     });
 });
+
+gulp.task('prod:start', () => {
+    nodemon({
+        script: 'build/server.js',
+        ext: 'js html',
+        env: { 'NODE_ENV': 'production' },
+    });
+});
+
+gulp.task('start', gulpsync.sync(['build', 'prod:start']));

@@ -1,11 +1,13 @@
 FROM node:latest
 
-RUN mkdir -p /var/www
+RUN mkdir /app
+WORKDIR /app
 
-WORKDIR /var/www
+COPY package.json /app
+RUN npm install
 
-COPY . /var/www
+COPY . /app
 
-EXPOSE 3003
+EXPOSE 3000
 
-CMD ["npm", "install", "&&", "gulp"]
+CMD ["npm", "start"]
