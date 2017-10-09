@@ -1,0 +1,36 @@
+<h1 id="form-page-heading">{{user}}'s comments</h1>
+<div id="main-content">
+  <div id="main-content-shadow"></div>
+  <div id="form-route-line">
+    <a href="#/">Home </a><span> / {{lowercase user}} </span>
+  </div>
+  <section id="comments-all">
+    {{#if comments.length}}
+    <h1>{{comments.length}} comments</h1>
+    {{#each comments}}
+    <div class="comment-container">
+      <h4>{{{f.title}}}, <i>{{date f.created}}</i></h4>
+
+      {{#if f.isDeleted}}
+
+        {{#if @root.admin}}
+          <button class="pure-button pure-button-primary btn-send-comment-restore" addr="{{f.created}}" parr="{{id}}">Restore</button>
+        {{/if}}  
+
+      <p class="grey-out">Comment is removed from administrator!</p>
+      {{else}}
+
+        {{#if @root.admin}}
+          <button class="pure-button pure-button-primary btn-send-comment-delete" addr="{{f.created}}" parr="{{id}}">Delete</button>
+        {{/if}}  
+
+      <p>{{{f.content}}}</p>
+      {{/if}}
+
+    </div>
+      {{/each}} 
+    {{else}}
+    <h1>No comments</h1>
+    {{/if}} 
+  </section>
+</div>

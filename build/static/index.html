@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="libs/toastr/build/toastr.min.css" />
+    <link rel="stylesheet" href="libs/purecss/build/pure-min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav id="navi-container">
+            <div id="navi-logo">
+                <a href="/#/">
+                    <img src="../images/logo.png" alt="tennis vissions logo">
+                </a>
+                <div id="navi-hamburger">
+                    <button class="hamburger">&#9776;</button>
+                    <button class="cross">&#735;</button>
+                </div>
+            </div>
+            <div id="navi-bar">
+                <ul id="menu-main">
+                    <li class="menu-item selected"><a href="/#/">Home</a></li>
+                    <li class="menu-item"><a href="/#/posts">All</a></li>
+                    <li class="menu-item"><a href="/#/posts/all/players">Players</a></li>
+                    <li class="menu-item"><a href="/#/posts/all/stories">Stories</a></li>
+                    <li class="menu-item nested">
+                        <a>Gallery &raquo;</a>
+                        <ul>
+                            <li>
+                                <a href="/#/gallery/small">Small</a>
+                            </li>
+                            <li>
+                                <a href="/#/gallery/medium">Medium</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="/#/contacts">Contacts</a></li>
+                    <li id="btn-login" class="menu-item nested"><a href="/#/users/login">Login</a></li>
+                    <li id="btn-signup" class="menu-item nested"><a href="/#/users/signup">Sign Up</a></li>
+                    <li id="btn-account" class="menu-item nested">
+                        <a>Account</a>
+                        <ul>
+                            <li>
+                                <a id="btn-logout">Logout</a>
+                            </li>
+                            <li>
+                                <a href="/#/users/profile">Profile</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div id="menu-social">
+                    <a href="#">
+                        <img src="../images/twitter.png" alt="twitter">
+                    </a>
+                    <a href="#">
+                        <img src="../images/rss.png" alt="rss feeds">
+                    </a>
+                    <a href="#">
+                        <img src="../images/facebook.png" alt="facebook">
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id="content">
+
+    </main>
+    <footer>
+        <section id="foot-top">
+            <article id="foot-mission">
+                <h4>ATP news</h4>
+                <p>For the fourth time in history Roger Federer and Rafael Nadal captured all four Grand Slam titles in a single year. Federer won his 18th Grand Slam defeating Nadal in the final of the Australian Open. Nadal won his 15th Grand Slam, and
+                    record 10th title in Paris, defeating Stan Wawrinka in the final of the French Open. </p>
+            </article>
+            <article id="foot-mission">
+                <h4>WTA news</h4>
+                <p>Tickets to the BNP Paribas WTA Finals Singapore presented by SC Global are on sale at the <a href="http://www.WTAFinals.com">www.WTAFinals.com</a>, an immersive one-stop destination for all things tournament-related, bringing fans the
+                    latest news from the top players on their journey on the Porsche Race to Singapore.</p>
+            </article>
+            <article id="foot-mission">
+                <h4>Ammateurs news</h4>
+                <p>Haviland Tennis Academy is a new junior academy located in Greenville, SC. We have a beautiful new tennis center that boasts 4 clay courts, 3 fast hard courts, and 3 slow hard courts. Our facility is dedicated to our junior program, so
+                    there are never members occupying courts or getting in the way of our training sessions. </p>
+            </article>
+        </section>
+        <section id="foot-bottom">
+            <p id="foot-right">Telerik Academy, 2017 - <strong>Zahari Dimitrov</strong></p>
+        </section>
+    </footer>
+    <script src="libs/systemjs/dist/system.js"></script>
+    <script src="js/system-config.js"></script>
+    <script src="libs/sammy/lib/sammy.js"></script>
+    <script src="libs/toastr/toastr.js"></script>
+    <script src="libs/handlebars/dist/handlebars.min.js"></script>
+    <script src="libs/crypto-js/crypto-js.js"></script>
+    <script src="libs/moment/min/moment.min.js"></script>
+</body>
+
+</html>
