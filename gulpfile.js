@@ -24,7 +24,7 @@ gulp.task('lint:js', () => {
 
 gulp.task('lint:css', () => {
     return gulp.src('src/**/*.css')
-        .pipe(csslint('.csslintrc'))
+        .pipe(csslint('csslintrc.json'))
         .pipe(csslint.formatter('compact'));
 });
 
