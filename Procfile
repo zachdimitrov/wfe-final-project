@@ -1,1 +1,1 @@
-web: node --debug=5858 build/server.js
+web: node build/server.js
