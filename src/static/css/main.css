@@ -221,6 +221,15 @@ iframe {
     #menu-main li:last-of-type {
         border: 0;
     }
+    .menu-item.nested ul {
+        position: relative;
+        top: 0;
+        float: right;
+        border-radius: 0;
+    }
+    .menu-item.nested ul li a {
+        line-height: 24px;
+    }
     #menu-social {
         position: absolute;
         top: 68px;
