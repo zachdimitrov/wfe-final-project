@@ -4,7 +4,7 @@ const mongoMorgan = require('mongo-morgan');
 const config = require('../../config');
 const fs = require('fs');
 
-const destStatic = './src/static';
+let destStatic = './src/static';
 if (fs.existsSync('./build')) {
     destStatic = './build/static';
 }
