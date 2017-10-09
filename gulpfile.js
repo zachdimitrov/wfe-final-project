@@ -7,7 +7,7 @@ const del = require('del');
 const cssMin = require('gulp-css');
 const smushit = require('gulp-smushit');
 const nodemon = require('gulp-nodemon');
-const shell = require('gulp-shell');
+// const exec = require('gulp-exec');
 
 const buildPath = '../wfe-heroku-deploy/tennis-vissioned/build';
 
@@ -24,8 +24,8 @@ gulp.task('lint:js', () => {
 
 gulp.task('lint:css', () => {
     return gulp.src('src/**/*.css')
-        .pipe(csslint())
-        .pipe(csslint.formatter());
+        .pipe(csslint('.csslintrc'))
+        .pipe(csslint.formatter('compact'));
 });
 
 gulp.task('lint', ['lint:js', 'lint:css']);
@@ -91,12 +91,14 @@ gulp.task('prod:start', () => {
 
 gulp.task('start', gulpsync.sync(['build', 'prod:start']));
 
-// deploy
+// deploy just for test
 
-gulp.task('deploy', shell.task([
-    'git add .',
-    `git commit -am "deploy version ${new Date().toString()}"`,
-    'git push heroku master',
-]));
+// gulp.task('deploy', () => {
+//     return gulp.src('./**/**')
+//         .pipe(exec(`git add . &&
+//             git commit -am "deploy version ${new Date().toString()}" &&
+//             git push heroku master`))
+//         .pipe(exec.reporter());
+// });
 
-gulp.task('deploy', gulpsync.sync(['build', 'deploy']));
+// gulp.task('deploy', gulpsync.sync(['build', 'deploy']));
