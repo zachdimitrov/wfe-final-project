@@ -13,8 +13,9 @@ function all(context, tpl) {
             posts = resPosts
                 .filter((p) => p.imageUrl.indexOf('../../') < 0 &&
                     !p.isDeleted)
+                .sort((a, b) => b.created - a.created)
                 .slice(0, 7);
-            posts.sort((a, b) => b.created - a.created);
+
             return templates.get(tpl);
         })
         .then(function(template) {

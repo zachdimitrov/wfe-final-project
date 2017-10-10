@@ -1,4 +1,4 @@
-cd ../wfe-heroku-deploy/tennis-vissioned
+cd ../wfe-heroku-deploy/tennis-visioned
 git add .
 set /p mes="Enter commit message: "
 git commit -am "%mes%"

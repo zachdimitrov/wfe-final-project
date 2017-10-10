@@ -9,7 +9,7 @@ const init = (data) => {
             let result;
 
             page = parseInt(page, 10) || 1;
-            size = parseInt(size, 10) || 10;
+            size = parseInt(size, 10) || 30;
 
             if (q) {
                 q = q.toLowerCase();
