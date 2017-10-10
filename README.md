@@ -24,12 +24,26 @@
 - based on [design distribution](https://github.com/TelerikAcademy/Slice-and-Dice/blob/master/Course-Project/PSDs.md)
 
 ## Installation
-- TODO
+- clone or download the [repo](https://github.com/zachdimitrov/wfe-final-project.git)
+- install dependancies `npm install`
+- run mongo instance for local start
+- start app
+  - locally `"./node_modules/.bin/gulp" dev`
+  - remote `./node_modules/.bin/gulp" start` it will build youur project
+- browse at `localhost:5000`
 
-## Test
-- TODO
+## Deployment
+- clone or download the [repo](https://github.com/zachdimitrov/wfe-final-project.git)
+- Create a [Heroku](https://www.heroku.com/) account and download the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli)
+- Create empty project and add [mLab](https://mlab.com/) extension
+- Create folder 'wfe-heroku-deploy' on the same level as 'wfe-final-project' folder
+- Open shell in this location, login to heroku `heroku login` and pull your heroku app `heroku git:clone -a tennis-vissioned`
+- `cd tennis-vissioned` and delete all content without the `.git` folder and then copy this [file](https://gist.github.com/zachdimitrov/7f19d2705b808aa4505150a591753ae9) inside
+- go back to `wfe-final-project` and start `./node_modules/.bin/gulp build`
+- start `deploy` script and when it ask you for commit message write something
+- that's it, browse the project here - [https://tennis-vissioned.herokuapp.com](https://tennis-vissioned.herokuapp.com)
 
-## Docker
+## Docker info
 - [docker demo](https://www.youtube.com/watch?v=0IEJMreS9vI&index=11&list=PLF4lVL1sPDSknRqUjl1PpGbI9Izn9pBqf)
 - [install docker](https://docs.docker.com/docker-for-windows/install/#where-to-go-next)
 - [docker hub](https://hub.docker.com/r/zachdimitrov/wfe-final-project/)
