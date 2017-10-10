@@ -172,7 +172,7 @@ function edit(context, post) {
                 return _createPost()
                     .then((newPost) => data.posts.update(post._id, newPost))
                     .then((p) => {
-                        toastr.success(`Post "${p.title}" updated!`);
+                        toastr.success(`Post updated!`);
                         setTimeout(() => {
                             context.redirect('#/posts');
                         }, 500);
@@ -228,7 +228,6 @@ function _createPost() {
             content: content.escape(),
             imageUrl: imageUrl.escape() || '../../images/no-image.jpg',
         };
-        console.log(post);
         res(post);
     });
 }

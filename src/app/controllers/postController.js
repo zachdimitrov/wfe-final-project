@@ -92,7 +92,7 @@ const init = (data) => {
                         .status(200)
                         .send({
                             message: 'Post successfully updated!',
-                            result: post,
+                            result: p,
                         });
                 });
         },

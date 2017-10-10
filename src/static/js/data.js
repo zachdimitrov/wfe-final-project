@@ -132,6 +132,7 @@ function postsAdd(post) {
 }
 
 function postsUpdate(id, post) {
+    post._id = id;
     const options = {
         data: post,
         headers: {
