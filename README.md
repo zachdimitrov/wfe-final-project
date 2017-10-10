@@ -41,7 +41,7 @@
 - `cd tennis-vissioned` and delete all content without the `.git` folder and then copy this [file](https://gist.github.com/zachdimitrov/7f19d2705b808aa4505150a591753ae9) inside
 - go back to `wfe-final-project` and start `./node_modules/.bin/gulp build`
 - start `deploy` script and when it ask you for commit message write something
-- that's it, browse the project here - [https://tennis-vissioned.herokuapp.com](https://tennis-vissioned.herokuapp.com)
+- that's it, browse the project here - [https://tennis-visioned.herokuapp.com](https://tennis-vissioned.herokuapp.com)
 
 ## Docker info
 - [docker demo](https://www.youtube.com/watch?v=0IEJMreS9vI&index=11&list=PLF4lVL1sPDSknRqUjl1PpGbI9Izn9pBqf)
