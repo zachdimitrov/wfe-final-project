@@ -1,10 +1,13 @@
 /* globals $ toastr */
 /* eslint-disable no-invalid-this */
+/* eslint-disable no-alert */
 
 import * as data from 'data';
 import * as templates from 'template-requester';
 import * as pageHelpers from 'page-helpers';
 import * as commentsController from 'comments-controller';
+import * as validate from 'validator';
+import * as CON from 'constants';
 
 function all(context) {
     let posts;
@@ -74,6 +77,11 @@ function read(context) {
                 commentsController.add(context, id);
             });
             $('.btn-send-comment-delete').click((ev) => {
+                const result = window.confirm('Are you sure?');
+                if (result === false) {
+                    ev.preventDefault();
+                    return;
+                }
                 context.params.commentid = $(ev.target).attr('addr');
                 commentsController.toggle(context, id, true);
             });
@@ -81,8 +89,16 @@ function read(context) {
                 context.params.commentid = $(ev.target).attr('addr');
                 commentsController.toggle(context, id, false);
             });
-            $('.btn-send-post-edit').click((ev) => {
+            $('#btn-send-post-edit').click((ev) => {
                 edit(context, post);
+            });
+            $('#btn-send-post-delete').click((ev) => {
+                const result = window.confirm('Are you sure?');
+                if (result === false) {
+                    ev.preventDefault();
+                    return;
+                }
+                del(context, post);
             });
         })
         .catch((err) => {
@@ -107,17 +123,8 @@ function add(context) {
         })
         .then(() => {
             $('#btn-send-post-add').on('click', () => {
-                const author = { 'username': data.users.authUser() };
-                const post = {
-                    author: author,
-                    created: Date.now(),
-                    isDeleted: false,
-                    category: $('#tb-post-category').val(),
-                    title: $('#tb-post-title').val().escape() || 'No title',
-                    content: $('#tb-post-content').val().escape(),
-                    imageUrl: $('#tb-post-imageurl').val().escape() || '../../images/no-image.jpg',
-                };
-                return data.posts.add(post)
+                return _createPost()
+                    .then((newPost) => data.posts.add(newPost))
                     .then((p) => {
                         toastr.success(`Post "${p.title}" added!`);
                         setTimeout(() => {
@@ -126,8 +133,12 @@ function add(context) {
                     })
                     .catch((err) => {
                         toastr.error(err.message, 'No post created!');
+                        return;
                     });
             });
+        })
+        .catch((err) => {
+            toastr.error(err.message, 'No post created!');
         });
 }
 
@@ -153,17 +164,13 @@ function edit(context, post) {
             $('#tb-post-content').val(post.content);
             $('#tb-post-imageurl').val(post.imageUrl);
 
-            $('#btn-send-post-add').on('click', () => {
-                const newPost = {
-                    author: post.author,
-                    created: post.created,
-                    isDeleted: false,
-                    category: $('#tb-post-category').val(),
-                    title: $('#tb-post-title').val().escape() || 'No title',
-                    content: $('#tb-post-content').val().escape(),
-                    imageUrl: $('#tb-post-imageurl').val().escape() || '../../images/no-image.jpg',
-                };
-                return data.posts.update(newPost)
+            $('#btn-send-post-add')
+                .html('Edit post')
+                .attr('id', 'btn-send-post-edit');
+
+            $('#btn-send-post-edit').on('click', () => {
+                return _createPost()
+                    .then((newPost) => data.posts.update(post._id, newPost))
                     .then((p) => {
                         toastr.success(`Post "${p.title}" updated!`);
                         setTimeout(() => {
@@ -172,10 +179,60 @@ function edit(context, post) {
                     })
                     .catch((err) => {
                         toastr.error(err.message, 'Post was not updated!');
+                        return;
                     });
             });
+        })
+        .catch((err) => {
+            toastr.error(err.message, 'Post was not updated!');
         });
 }
+
+function del(context, post) {
+    const newPost = post;
+    newPost.isDeleted = true;
+
+    return data.posts.update(post._id, newPost)
+        .then((p) => {
+            toastr.success(`Post "${p.title}" removed!`);
+            setTimeout(() => {
+                context.redirect('#/posts');
+            }, 500);
+        })
+        .catch((err) => {
+            toastr.error(err.message, 'Post was not removed!');
+        });
+}
+
+function _createPost() {
+    return new Promise((res, rej) => {
+        const author = { 'username': data.users.authUser() };
+
+        // validate data, TODO: create model
+        const title = validate.text(
+            $('#tb-post-title').val(),
+            CON.TITLE_MIN_LENGTH,
+            CON.TITLE_MAX_LENGTH);
+        const content = validate.text(
+            $('#tb-post-content').val(),
+            CON.CONTENT_MIN_LENGTH,
+            CON.CONTENT_MAX_LENGTH);
+        const imageUrl = validate.link($('#tb-post-imageurl').val());
+
+        const post = {
+            author: author,
+            created: Date.now(),
+            isDeleted: false,
+            category: $('#tb-post-category').val(),
+            title: title.escape() || 'No title',
+            content: content.escape(),
+            imageUrl: imageUrl.escape() || '../../images/no-image.jpg',
+        };
+        console.log(post);
+        res(post);
+    });
+}
+
 export {
     all,
     add,

@@ -131,9 +131,8 @@ function postsAdd(post) {
         });
 }
 
-function postsUpdate(post) {
-    const id = post._id;
-        const options = {
+function postsUpdate(id, post) {
+    const options = {
         data: post,
         headers: {
             'x-auth-key': sessionStorage.getItem(KEY.STORAGE_AUTHKEY),

@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 
-function validateString(str, min, max, chars) {
+function text(str, min, max, chars) {
     if (typeof str !== 'string' || str.length < min || str.length > max) {
-        throw new Error(`Invalid username: Length must be between ${min} and ${max}`);
+        throw new Error(`Invalid text: Length must be between ${min} and ${max}`);
     }
 
     if (chars) {
@@ -10,12 +10,14 @@ function validateString(str, min, max, chars) {
         if (str.some(function(char) {
                 return chars.indexOf(char) < 0;
             })) {
-            throw new Error(`Invalid username: Chars can be ${chars}`);
+            throw new Error(`Invalid symbol! Use only ${chars}`);
         }
     }
+
+    return str;
 }
 
-function validateEmail(email) {
+function mail(email) {
     if (!email || email.length === 0) {
         throw new Error('Invalid email: Email cannot be empty');
     }
@@ -24,11 +26,13 @@ function validateEmail(email) {
     if (!pattern.test(email)) {
         throw new Error('Invalid email: Please use name@url.ext pattern');
     }
+
+    return email;
 }
 
-function validateUrl(url) {
+function link(url) {
     if (!url || url.length === 0) {
-        return;
+        return url;
     }
 
     // copied from http://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-an-url#answer-5717133
@@ -36,18 +40,22 @@ function validateUrl(url) {
     if (!pattern.test(url)) {
         throw new Error('Invalid url');
     }
+
+    return url;
 }
 
-function validatePassword(password) {
+function pass(password) {
     if (typeof password !== 'string' || password.length === 0) {
         const message = 'Invalid password: Password cannot be empty!';
         throw new Error(message);
     }
+
+    return password;
 }
 
 export {
-    validateString,
-    validateEmail,
-    validateUrl,
-    validatePassword,
+    text,
+    mail,
+    link,
+    pass,
 };

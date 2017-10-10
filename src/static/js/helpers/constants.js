@@ -5,6 +5,8 @@ const USERNAME_MAX_LENGTH = 30;
 const ADMINS = ['admin', 'zach'];
 const TITLE_MIN_LENGTH = 3;
 const TITLE_MAX_LENGTH = 45;
+const CONTENT_MIN_LENGTH = 10;
+const CONTENT_MAX_LENGTH = 100000;
 const ROLE = {
     ADMIN: 'admin',
     REGULAR: 'regular',
@@ -29,6 +31,8 @@ export {
     USERNAME_MAX_LENGTH,
     TITLE_MIN_LENGTH,
     TITLE_MAX_LENGTH,
+    CONTENT_MIN_LENGTH,
+    CONTENT_MAX_LENGTH,
     ADMINS,
     ROLE,
     KEY,

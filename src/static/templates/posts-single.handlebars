@@ -28,6 +28,10 @@
                         {{post.comments.length}} comments
                     </a> {{/if}}
         </h4>
+        {{#if @root.admin}}
+          <button class="post-admin-button pure-button pure-button-primary" id="btn-send-post-edit" addr="{{created}}">Edit</button>
+          <button class="post-admin-button pure-button pure-button-primary" id="btn-send-post-delete" addr="{{created}}">Delete</button>
+        {{/if}} 
       </div>
       <div class="main-gallery-item single-image">
         <div class="main-gallery-item-shadow"></div>
@@ -90,3 +94,13 @@
 
   </section>
 </div>
+
+<style>
+  .post-admin-button {
+    margin: 10px 10px 0 0;
+  }
+
+  #btn-send-post-delete {
+    background: #CA3C3C;
+  }
+</style>
