@@ -9,7 +9,7 @@ const smushit = require('gulp-smushit');
 const nodemon = require('gulp-nodemon');
 // const exec = require('gulp-exec');
 
-const buildPath = '../wfe-heroku-deploy/tennis-vissioned/build';
+const buildPath = '../wfe-heroku-deploy/tennis-visioned/build';
 
 gulp.task('default', () => {});
 

@@ -8,9 +8,13 @@ import * as pageHelpers from 'page-helpers';
 function all(context, tpl) {
     const user = data.users.authUser();
     let posts;
-    data.posts.get(1, 7)
+    data.posts.get()
         .then(function(resPosts) {
-            posts = resPosts;
+            posts = resPosts
+                .filter((p) => p.imageUrl.indexOf('../../') < 0 &&
+                    !p.isDeleted)
+                .slice(0, 7);
+            posts.sort((a, b) => b.created - a.created);
             return templates.get(tpl);
         })
         .then(function(template) {

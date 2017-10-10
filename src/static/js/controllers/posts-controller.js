@@ -16,7 +16,7 @@ function all(context) {
     data.posts.get()
         .then((resPosts) => {
             posts = resPosts
-                .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
+                .sort((a, b) => b.created - a.created);
             return templates.get('posts-all');
         })
         .then((template) => {
@@ -37,7 +37,7 @@ function category(context) {
         .then((resPosts) => {
             posts = resPosts
                 .filter((p) => p.category.toLowerCase() === cat.toLowerCase())
-                .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
+                .sort((a, b) => b.created - a.created);
             return templates.get('posts-all');
         })
         .then((template) => {
@@ -65,7 +65,7 @@ function read(context) {
     data.posts.get()
         .then((resPosts) => {
             posts = resPosts
-                .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
+                .sort((a, b) => b.created - a.created);
             post = posts.find((p) => p._id === id);
             ctx = { admin, user, posts, post };
             return templates.get('posts-single');
@@ -159,10 +159,10 @@ function edit(context, post) {
                 .html(template());
         })
         .then(() => {
-            $('#tb-post-category').val(post.category);
-            $('#tb-post-title').val(post.title);
-            $('#tb-post-content').val(post.content);
-            $('#tb-post-imageurl').val(post.imageUrl);
+            $('#tb-post-category').val((post.category).unescape());
+            $('#tb-post-title').val((post.title).unescape());
+            $('#tb-post-content').val((post.content).unescape());
+            $('#tb-post-imageurl').val((post.imageUrl).unescape());
 
             $('#btn-send-post-add')
                 .html('Edit post')
