@@ -14,7 +14,7 @@ function add(context, id) {
                 isDeleted: false,
                 created: Date.now(),
                 author: author,
-                title: $('#tb-comment-title').val().escape(),
+                title: $('#tb-comment-title').val().escape() || 'Untitled',
                 content: $('#tb-comment-content').val().escape(),
             });
             return post;

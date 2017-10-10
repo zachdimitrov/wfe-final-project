@@ -11,16 +11,16 @@ function all(context) {
     const user = data.users.authUser();
     const admin = data.users.hasAdmin();
     data.posts.get()
-        .then(function(resPosts) {
+        .then((resPosts) => {
             posts = resPosts
                 .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
             return templates.get('posts-all');
         })
-        .then(function(template) {
+        .then((template) => {
             const ctx = { admin, user, posts, cat: '' };
             context.$element().html(template(ctx));
         })
-        .catch(function(err) {
+        .catch((err) => {
             toastr.error(err.message, 'No posts found!');
         });
 }
@@ -31,13 +31,13 @@ function category(context) {
     const user = data.users.authUser();
     const admin = data.users.hasAdmin();
     data.posts.get()
-        .then(function(resPosts) {
+        .then((resPosts) => {
             posts = resPosts
                 .filter((p) => p.category.toLowerCase() === cat.toLowerCase())
                 .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
             return templates.get('posts-all');
         })
-        .then(function(template) {
+        .then((template) => {
             if (posts) {
                 cat = posts[0].category;
             } else {
@@ -47,7 +47,7 @@ function category(context) {
             const ctx = { admin, user, posts, cat };
             context.$element().html(template(ctx));
         })
-        .catch(function(err) {
+        .catch((err) => {
             toastr.error(err.message, 'No posts found!');
         });
 }
@@ -60,14 +60,14 @@ function read(context) {
     let post = {};
     let ctx = {};
     data.posts.get()
-        .then(function(resPosts) {
+        .then((resPosts) => {
             posts = resPosts
                 .sort((a, b) => Date.parse(a.created) < Date.parse(b.created));
             post = posts.find((p) => p._id === id);
             ctx = { admin, user, posts, post };
             return templates.get('posts-single');
         })
-        .then(function(template) {
+        .then((template) => {
             context.$element().html(template(ctx));
             pageHelpers.zoomin();
             $('#btn-send-comment-add').click((ev) => {
@@ -81,8 +81,11 @@ function read(context) {
                 context.params.commentid = $(ev.target).attr('addr');
                 commentsController.toggle(context, id, false);
             });
+            $('.btn-send-post-edit').click((ev) => {
+                edit(context, post);
+            });
         })
-        .catch(function(err) {
+        .catch((err) => {
             toastr.error(err.message, 'No posts found!');
         });
 }
@@ -98,12 +101,12 @@ function add(context) {
     }
 
     return templates.get('posts-add')
-        .then(function(template) {
+        .then((template) => {
             return context.$element()
                 .html(template());
         })
         .then(() => {
-            $('#btn-send-post-add').on('click', function() {
+            $('#btn-send-post-add').on('click', () => {
                 const author = { 'username': data.users.authUser() };
                 const post = {
                     author: author,
@@ -112,7 +115,7 @@ function add(context) {
                     category: $('#tb-post-category').val(),
                     title: $('#tb-post-title').val().escape() || 'No title',
                     content: $('#tb-post-content').val().escape(),
-                    imageUrl: $('#tb-post-imageurl').val().escape(),
+                    imageUrl: $('#tb-post-imageurl').val().escape() || '../../images/no-image.jpg',
                 };
                 return data.posts.add(post)
                     .then((p) => {
@@ -121,16 +124,62 @@ function add(context) {
                             context.redirect('#/posts');
                         }, 500);
                     })
-                    .catch(function(err) {
+                    .catch((err) => {
                         toastr.error(err.message, 'No post created!');
                     });
             });
         });
 }
 
+function edit(context, post) {
+    const admin = data.users.hasAdmin();
+
+    if (!admin) {
+        toastr.error('You are not admin!', 'Access denied!');
+        setTimeout(() => {
+            context.redirect('#/posts');
+        }, 500);
+        return false;
+    }
+
+    return templates.get('posts-add')
+        .then((template) => {
+            return context.$element()
+                .html(template());
+        })
+        .then(() => {
+            $('#tb-post-category').val(post.category);
+            $('#tb-post-title').val(post.title);
+            $('#tb-post-content').val(post.content);
+            $('#tb-post-imageurl').val(post.imageUrl);
+
+            $('#btn-send-post-add').on('click', () => {
+                const newPost = {
+                    author: post.author,
+                    created: post.created,
+                    isDeleted: false,
+                    category: $('#tb-post-category').val(),
+                    title: $('#tb-post-title').val().escape() || 'No title',
+                    content: $('#tb-post-content').val().escape(),
+                    imageUrl: $('#tb-post-imageurl').val().escape() || '../../images/no-image.jpg',
+                };
+                return data.posts.update(newPost)
+                    .then((p) => {
+                        toastr.success(`Post "${p.title}" updated!`);
+                        setTimeout(() => {
+                            context.redirect('#/posts');
+                        }, 500);
+                    })
+                    .catch((err) => {
+                        toastr.error(err.message, 'Post was not updated!');
+                    });
+            });
+        });
+}
 export {
     all,
     add,
     read,
+    edit,
     category,
 };
