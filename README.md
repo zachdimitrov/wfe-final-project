@@ -32,6 +32,24 @@
   - remote `./node_modules/.bin/gulp" start` it will build youur project
 - browse at `localhost:5000`
 
+## User accounts
+### Unregistered
+If no user is logged in you can only read posts and comments  
+
+### Regular user account 
+Regular users can write comments to posts  
+Create user with sign up menu and login with your credentials  
+
+### Admin account
+Admin account gives more functionality to app.  
+Admin can add, edit and delete messages.  
+Admin can remove (mark as deleted) other users comments.  
+Admin can view other all comments for selected user.  
+
+Test the admin account:
+    user: **admin**
+    pass: **123qwe**
+    
 ## Deployment
 - clone or download the [repo](https://github.com/zachdimitrov/wfe-final-project.git)
 - Create a [Heroku](https://www.heroku.com/) account and download the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli)
